@@ -46,6 +46,10 @@ html , body{
     color: #000000;
 }
 
+.HamburgerMenu{
+    display: none;
+}
+
 
 /* -------------------------------------------navcomp---------------------------------------------------- */
 
@@ -113,4 +117,200 @@ html , body{
     text-align: center; /* Center-align text */
     line-height: 50px; /* Vertically center the text */
     font-size: 18px; 
+}
+
+
+
+/* For medium devices (600px to 900px width) */
+@media (max-width: 1025px) {
+    .Mainheader{
+        background-image: url('../assets/Backgroundimgs/headerbgimg.jpg'); /* Replace with your image URL */
+        background-size: cover; /* Ensures the image covers the entire header */
+        background-repeat: no-repeat;
+        margin-top: 0px;
+        height: 290px; 
+        display: flex;
+        flex-direction: row;
+        justify-content: start;
+        align-items: center;
+    }
+
+    .logoimg{
+        width: 200px;
+        border-radius: 100%;
+        position: relative;
+        /* margin-left: -155px; */
+        margin-top: -30px;
+    }
+
+    .Headertitle{
+        font-size: 55px;
+        font-family: 'Barlow', sans-serif;
+        font-weight: 600; 
+        color: #FFFFFF;
+        margin-left: 60px;
+    }
+
+    .HeaderLoginbutton {
+        top: 20px;
+        right: 25px;
+    }
+
+    .Footercomps{
+        transform: scale(0.8);
+    }
+
+    .FootQuickLinks h3{
+        width: 139px;
+    }
+}
+
+
+
+/* For small devices (up to 600px width) */
+@media (max-width: 431px) {
+
+    .Footercomps{
+        transform: scale(0.6);
+    }
+    /* Hamburger Menu */
+.HamburgerMenu {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+    position: relative;
+    margin-left: 30px;
+    z-index: 20;
+}
+
+.HamburgerMenu .line {
+    width: 100%;
+    height: 4px;
+    background-color: #000000; /* White lines */
+    border-radius: 2px;
+}
+
+    .DropdownMenu {
+        background-color: #FADD51; /* Matches the nav bar style */
+        position: absolute;
+        /* top: 60px;  */
+        /* right: 10px; */
+        width: 100%;
+        border-radius: 8px;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        z-index: 10;
+        padding: 10px;
+    }
+    
+    .DropdownMenu ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+    }
+    
+    .DropdownMenu li {
+        padding: 10px 0;
+        text-align: center;
+    }
+    
+    .DropdownMenu li a {
+        text-decoration: none;
+        color: #333;
+        font-size: 18px;
+        display: block;
+        font-weight: 500;
+    }
+    
+    .DropdownMenu li:hover {
+        background-color: #FFD700; /* Highlight on hover */
+    }
+
+
+
+    .Navcomp , .HeaderLoginbutton{
+        display: none;
+    }
+
+    .Mainheader{
+        width: 100%;
+        height: 130px;
+        background-image: url('../assets/Backgroundimgs/Logobannerempty.jpg'); 
+    }
+
+    .logoimg{
+        width: 100px;
+        border-radius: 100%;
+        position: relative;
+        margin-left: -10px;
+        margin-top: -30px;
+    }
+
+    .Headertitle{
+        font-size: 25px;
+        font-family: 'Barlow', sans-serif;
+        font-weight: 600; 
+        color: #FFFFFF;
+        margin-left: 30px;
+    }
+
+    .HeaderLoginbutton {
+        display: none;   
+    }
+    
+    .HeaderLoginbuttons{
+        display: block;
+        width: 100px;
+        height: 35px;
+        position: absolute;
+        text-align: center;
+        display: flex; 
+        align-items: center; 
+        justify-content: center; 
+        font-size: 18px; 
+        background-color: #FADD51;
+        border: none;
+        border-radius: 20px;
+        color: #000000;
+        top: 20px;
+        right: 25px;
+    }
+
+    .FooterMainComp{
+        height:700px;
+    }
+    
+    .Footercomps{
+        flex-direction: column;
+        gap: 70px;
+    }
+
+    .Footaddresscomp{
+        font-size: 25px !important;
+        width: 207px !important;
+    }
+
+    .address{
+        width: 250px !important;
+        font-size: 23px !important;
+    }
+
+    .footerlinks{
+        font-size: 23px;
+    }
+
+    .FooterLogo{
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .copyright{
+        font-size: 15px;
+    }
+
+    .FootQuickLinks hr{
+        width: 150px;
+    }   
 }

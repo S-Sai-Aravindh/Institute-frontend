@@ -9,13 +9,13 @@ const FooterComp = () => {
     <div className='FooterMainComp'>
       <div className='Footercomps'> 
           <div >
-              <h3>Address</h3>
+              <h3 className='Footaddresscomp'>Address</h3>
               <hr style={{width:"120px"}}></hr>
               <div className='address'>No. 15, Second Cross Street, Anna Nagar West, Chennai - 600040, Tamil Nadu, India.</div>
           </div>
 
           <div className='FootQuickLinks'>
-              <h3>Quick Links</h3>
+              <h3 className='Footaddresscomp'>Quick Links</h3>
               <hr></hr>
                     <Link to="" className="footerlinks">Home</Link>{" "}<br></br>
                     <Link to="" className="footerlinks">About Us</Link>{" "}<br></br>
