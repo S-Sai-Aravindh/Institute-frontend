@@ -1,19 +1,17 @@
 import React from 'react';
 import { Link , useNavigate } from 'react-router-dom';
-import '../Styles/Style.css';
+import './Style.css';
 
 const NavComp = () => {
-  const navigate = useNavigate();
-  const handleLogout = () => {
-    navigate('/'); 
-  };
+  
   return (
     <div className="nav-container">
-      <h1 className="nav-header">Main Dashboard</h1>
-      <Link to="" className="nav-btn">My Details</Link>{" "}
-      <Link to="AttendanceRecord" className="nav-btn">Attendance Details</Link>{" "}
-      <Link to="allemployees" className="nav-btn">All Employees</Link>{" "}
-      <button onClick={handleLogout} className="nav-btn2">Logout</button>
+      <Link to="" className="navbuttons">Home</Link>{" "}
+      <Link to="" className="navbuttons">About Us</Link>{" "}
+      <Link to="" className="navbuttons">All Courses</Link>{" "}
+      <Link to="" className="navbuttons">Batches</Link>{" "}
+      <Link to="" className="navbuttons">Contact Us</Link>{" "}
+      {/* <Link to="" className="navbuttons">My Profile</Link>{" "} */}
     </div>
   );
 };

@@ -1,14 +1,19 @@
 import React from 'react';
-import Logo from '../assets/Logo/logo2-Photoroom.png';
+import Logo from '../assets/Logo/logoimgfinal-Photoroom.png';
 import './Style.css';
+import NavComp from './NavComp';
 
 const HeaderComp = () => {
   return (
     <div>
         <div className='Mainheader'>
             <span className='Logoimgspan'><img src={Logo} alt='Logo' className='logoimg'/></span>
-            <span><namehead >Mirai D. Scholars</namehead></span>
-            <button>Login</button>
+            <span className='Headertitle'>Mirai D. Scholars</span>
+            {/* <button className='HeaderLoginbutton btn btn-warning'>Login</button> */}
+            <button className='HeaderLoginbutton'>Login</button>
+        </div>
+        <div>
+          <NavComp/>
         </div>
     </div>
   )

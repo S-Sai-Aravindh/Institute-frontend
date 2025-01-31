@@ -1,8 +1,116 @@
+html , body{
+    margin: 0;
+}
+
+.Mainheader{
+    background-image: url('../assets/Backgroundimgs/headerbgimg.jpg'); /* Replace with your image URL */
+    background-size: cover; /* Ensures the image covers the entire header */
+    background-repeat: no-repeat;
+    margin-top: -10px;
+    height: 290px; 
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
 .logoimg{
     width: 250px;
     border-radius: 100%;
-    /* border: 2px solid ; */
+    position: absolute;
+    top: 15px;
+    left: 25px;
 }
-namehead{
-    color: aqua;
+
+.Headertitle{
+    font-size: 80px;
+    font-family: 'Barlow', sans-serif;
+    font-weight: 600; 
+    color: #FFFFFF;
+}
+
+.HeaderLoginbutton {
+    width: 100px;
+    height: 35px;
+    position: absolute;
+    top: 35px;
+    right: 50px;
+    text-align: center;
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    font-size: 18px; 
+    background-color: #FADD51;
+    border: none;
+    border-radius: 20px;
+    color: #000000;
+}
+
+
+/* -------------------------------------------navcomp---------------------------------------------------- */
+
+
+.nav-container{
+    height: 60px;
+    background: linear-gradient(90deg, #FADD51,#FADD51, #FFC107, #F9A825);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    /* gap: 30px; */
+}
+
+.navbuttons{
+    text-decoration: none;
+    font-size: 25px;
+    color: #333333;
+}
+
+/* -------------------------------------------Footercomp---------------------------------------------------- */
+
+
+.FooterMainComp {
+    height: 230px;
+    background: linear-gradient(45deg, #000000, #1C1C1C, #333333);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.Footercomps{
+    display: flex;
+    flex-direction: row;
+    gap: 80px;
+    /* justify-content: space-evenly; */
+    color: wheat;
+}
+
+.FooterLogo{
+    width: 200px;
+    border-radius: 50%;
+}
+
+
+.address{
+    width: 150px;
+    text-decoration: none;
+    font-size: 17px;
+    color: wheat;
+}
+
+.footerlinks{
+    text-decoration: none;
+    font-size: 17px;
+    color: wheat;
+}
+
+.copyright {
+    background-color: #333333;
+    height: 50px;
+    color: #FFFFFF; /* Adjust color based on your choice */
+    text-align: center; /* Center-align text */
+    line-height: 50px; /* Vertically center the text */
+    font-size: 18px; 
 }
