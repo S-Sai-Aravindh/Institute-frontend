@@ -1,0 +1,17 @@
+{
+    "users":
+    [
+        {
+             "mailid":"kadhir@gmail.com",
+             "password":"kadhir@123"
+        },
+        {
+            "mailid":"dharun@gmail.com",
+             "password":"dharun@123"
+        },
+        {
+            "mailid":"sai@gmail.com",
+             "password":"sai@123"
+        }
+    ]
+}
