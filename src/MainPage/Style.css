@@ -1,0 +1,372 @@
+/*--------------------------------------- home Page Comp ------------------------------ */
+
+@keyframes fadeInUp {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+
+
+  .HomePageComp{
+    background-color: #FFF8E1;
+  }
+
+  .KeyHighlightsSection{
+    margin-top: 30px;
+  }
+
+
+  .carousel-container {
+    text-align: center; /* Centers the header */
+    margin-bottom: 20px; /* Adds space between the header and the carousel */
+  }
+  
+  .carousel-heading {
+    font-size: 40px; /* Larger heading */
+    font-weight: bold;
+    color: #FF8E35; /* Matches your header color */
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    /* text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.6), 0 0 25px rgba(255, 142, 53, 0.6);  */
+    margin-bottom: 20px; /* Adds space below the heading */
+    padding: 0 10px; /* Optional: Adds some padding to make the text look more spacious */
+  }
+  
+
+  .carousel1 {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;  /* Makes the image responsive */
+    max-width: 1200px; /* Optional: Set max width if you want to limit the size */
+  }
+
+.FeatDuration{
+    margin-bottom: 15px;
+}
+  
+
+.HomeContactUs {
+    width: 170px;
+    height: 50px;
+    font-size: 20px;
+    font-weight: 800;
+    background-color: #FF8E35; /* Matches your header color */
+    color: white; /* Better contrast for readability */
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Adds depth */
+  }
+  
+  .HomeContactUs:hover {
+    background-color: #F57C00; /* Slightly darker orange for hover effect */
+    transform: scale(1.05); /* Subtle zoom on hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4); /* Stronger shadow for emphasis */
+  }
+  
+  .HomeContactUs:active {
+    transform: scale(0.98); /* Press-down effect */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Softer shadow when clicked */
+  }
+  
+  .know-heading {
+    width: 600px;
+    height: 60px;
+    font-size: 65px; /* Larger heading */
+    font-weight: bold;
+    color: #f7500e; /* Matches your header color */
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-align: left;
+    margin-bottom: 10px; /* Space below heading */
+    padding: 0 10px; /* Optional padding for better text spacing */
+  }
+  
+  .KnowSection {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 80px; /* Slightly reduced gap for balance */
+    background:  linear-gradient(91.28deg, #FF8E35 -3%, #FFA726 41.98%, #FFF8E1 99.82%);
+    /* Light gradient background */
+    padding: 30px 20px; /* Adds breathing space */
+    border-radius: 20px; /* Smooth rounded corners */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Soft shadow for elevation */
+    width: 80%;
+    margin-bottom: 30px;
+
+  }
+  
+
+/* ---------------------------------------  About Us-------------------------------- */
+
+  /* AboutUsComp.css */
+
+.about-container {
+  padding: 40px;
+  background: #FFF8E1; /* Soft background for a warm feel */
+  color: #333;
+  font-family: 'Arial', sans-serif;
+  line-height: 1.6;
+}
+
+.about-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.about-header h1 {
+  font-size: 48px;
+  color: #FF8E35; /* Matches the brand color */
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+
+.about-tagline {
+  font-size: 20px;
+  color: #666;
+  margin-top: 10px;
+  font-style: italic;
+}
+
+.about-section {
+  margin-bottom: 40px;
+  padding: 20px;
+  background: linear-gradient(91deg, #FFE0B2, #FFF3E0); /* Soft gradient background */
+  border-left: 5px solid #FF8E35;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.about-section h2 {
+  font-size: 30px;
+  color: #CC0530; /* Strong contrast color */
+  margin-bottom: 15px;
+}
+
+.about-section p {
+  font-size: 18px;
+  color: #444;
+}
+
+.core-values {
+  list-style-type: square;
+  padding-left: 20px;
+  color: #555;
+}
+
+.core-values li {
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+
+/* ------------------------------All courses------------------------------------------------ */
+
+.AllCoursesSection{
+  background: #FFF8E1;
+}
+/* General Container Styles */
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+}
+
+/* Heading Styles */
+.text-center {
+  text-align: center;
+  color: #FF8E35;
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+
+/* Card Styles */
+.card {
+  border: none;
+  border-radius: 15px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background: linear-gradient(135deg, #FF8E35, #FFF8E1);
+  color: #3E2723;
+  cursor: pointer;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.card-img-top {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.card-body {
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+.card-title {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #BF360C;
+}
+
+.card-text {
+  font-size: 16px;
+  color: #5D4037;
+}
+
+/* Modal Styles */
+.modal-content {
+  border-radius: 20px;
+  background: #FFF8E1;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+}
+
+.modal-header {
+  background-color: #FF8E35;
+  color: white;
+  border-bottom: none;
+  border-radius: 20px 20px 0 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.modal-title {
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.modal-body {
+  font-size: 16px;
+  color: #3E2723;
+  padding: 20px;
+}
+
+.close {
+  background: none;
+  border: none;
+  font-size: 30px;
+  color: white;
+  cursor: pointer;
+
+}
+
+
+
+.Exploreheader{
+  margin-top: 10px;
+  font-size: 48px;
+  color: #FF8E35; /* Matches the brand color */
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+
+/* ---------------------Batch comp----------------------------------- */
+
+
+.batch-container {
+  padding: 20px;
+  text-align: center;
+  background-color: #FFF8E1;
+}
+
+.Batchheader{
+  margin-top: 10px;
+  font-size: 48px;
+  color: #FF8E35; /* Matches the brand color */
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  margin-bottom: 30px;
+}
+
+.batch-title {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.batch-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  gap: 20px;
+}
+
+.batch-card {
+  
+  background: linear-gradient(91deg,  #f8cb81 , white );; /* Softer white background */
+  border: 1px solid #e0e0e0; /* Light gray border */
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.batch-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.batch-course-name {
+  font-size: 25px;
+  font-weight: bold;
+  color: #444;
+  margin-bottom: 10px;
+}
+
+.batch-info {
+  margin: 5px 0;
+  color: #666;
+  font-size: 16px;
+}
+
+.batch-info strong {
+  color: #333;
+}
+
+
+
+
+
+/* --------------------------------media query---------------------------------- */
+
+
+
+
+
+@media (max-width: 1025px) {
+  .know-heading{
+    font-size: 57px;
+  }
+}
+
+
+@media (max-width: 431px){
+  .KnowSection{
+    flex-direction: column;
+    gap: 0px;
+  }
+
+  .know-heading{
+    font-size: 32px;
+    height: 43px;
+    width: max-content;
+  }
+}
+

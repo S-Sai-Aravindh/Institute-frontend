@@ -44,6 +44,7 @@ html , body{
     border: none;
     border-radius: 20px;
     color: #000000;
+    text-decoration: none;
 }
 
 .HamburgerMenu{
@@ -80,6 +81,7 @@ html , body{
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    border-radius: 25px 25px 0 0 ;
 }
 
 
