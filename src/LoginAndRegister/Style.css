@@ -1,7 +1,49 @@
 .LoginHeader{
-    margin-top: 10px;
-  font-size: 48px;
-  color: #FF8E35; /* Matches the brand color */
-  text-transform: uppercase;
-  letter-spacing: 3px;
+  margin-top: 10px;
+font-size: 38px;
+color: #FF8E35; /* Matches the brand color */
+text-transform: uppercase;
+letter-spacing: 3px;
+}
+.LoginRegister{
+text-decoration: none;
+color: blue;
+font-size: 20px;
+}
+.LoginRegisterText{
+font-size: 20px;
+}
+.LoginContainer{
+background-color:#FFF8E1;
+overflow-x: hidden;
+padding: 30px;
+/* padding: 5px; */
+}
+
+.LoginContainerLogin{
+ align-items: center;
+ display: flex;
+ flex-direction: column;
+ 
+}
+
+
+
+/* ----------------------------Register Page----------------------------- */
+
+
+.RegisterLogin{
+text-decoration: none;
+}
+
+.RegisterContainer{
+color: #FF8E35;
+}
+
+.RegisterHeader{
+margin-top: 10px;
+font-size: 35px;
+color: #FF8E35; /* Matches the brand color */
+text-transform: uppercase;
+letter-spacing: 3px;
 }
