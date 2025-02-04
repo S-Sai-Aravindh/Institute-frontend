@@ -21,7 +21,7 @@ const LoginComp = () => {
     
             {/* Right Side: Login Form */}
             <div className="col-md-6 bg-light p-5">
-              <h2 className="text-center mb-4">Login</h2>
+              <h2 className="text-center mb-4 LoginHeader">Login</h2>
     
               <form>
                 <div className="mb-3">

@@ -1,0 +1,7 @@
+.LoginHeader{
+    margin-top: 10px;
+  font-size: 48px;
+  color: #FF8E35; /* Matches the brand color */
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
