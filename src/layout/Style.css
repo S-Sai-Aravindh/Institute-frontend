@@ -71,6 +71,23 @@ html , body{
     color: #333333;
 }
 
+
+.subnav-container{
+    height: 60px;
+    background: linear-gradient(90deg, #FADD51,#FADD51, #FFC107, #F9A825);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    /* gap: 30px; */
+}
+
+.subnavbuttons{
+    text-decoration: none;
+    font-size: 25px;
+    color: #333333;
+}
+
 /* -------------------------------------------Footercomp---------------------------------------------------- */
 
 

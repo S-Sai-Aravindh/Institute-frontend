@@ -2,43 +2,77 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './Style.css';
 import LoginVisual from '../assets/Login/LoginVisual2.jpg';
+import axios from 'axios';
 
 const LoginComp = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
 
+
+
+
     const handleLogin = async (e) => {
         e.preventDefault();
-
-        const response = await fetch('http://localhost:5000/api/auth/login', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ email, password }),
-        });
-
-        if (response.ok) {
-            const data = await response.json();
+    
+        const email = e.target.email.value;
+        const password = e.target.password.value;
+    
+        try {
+            // Sending email and password as query parameters in GET request
+            const response = await axios.get('http://localhost:5109/api/auth', {
+                params: {
+                    email,
+                    password
+                }
+            });
+    
+            // Check if the response contains a list of users
+            const user = response.data.find((user) => user.email === email && user.password === password);
+            
+            if (!user) {
+                alert('Invalid credentials');
+                return;
+            }
+    
+            // Extract user data from the matched user
+            const { role, userId, name } = user;
+            console.log("Fetched Data from API:", user);
+            console.log("User ID:", userId);
+            console.log("User Name:", name);
+    
             // Navigate based on role
-            switch (data.role) {
-                case 'admin':
-                    navigate('/admin');
+            switch (role) {
+                case 'Admin':
+                    navigate('/Myprofile/admin');
                     break;
-                case 'student':
+                case 'Student':
                     navigate('/student');
                     break;
-                case 'teacher':
+                case 'Teacher':
                     navigate('/teacher');
                     break;
                 default:
                     navigate('/');
             }
-        } else {
-            alert('Login failed. Please check your email and password.');
+        } catch (error) {
+            if (error.response) {
+                // Server returned a response outside the 2xx range
+                alert(error.response.data.message || 'Failed to authenticate.');
+            } else if (error.request) {
+                // No response received
+                console.error("No response from server:", error.request);
+                alert('Failed to connect to the server.');
+            } else {
+                // Something else went wrong
+                console.error('Error:', error.message);
+                alert('An error occurred while processing your request.');
+            }
         }
     };
+    
+    
+
 
     return (
         <div className="LoginContainer">

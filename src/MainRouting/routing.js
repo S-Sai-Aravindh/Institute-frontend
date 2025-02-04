@@ -9,6 +9,10 @@ import AllCoursesComp from '../MainPage/AllCoursesComp';
 import ContactUsComp from '../MainPage/ContactUsComp';
 import RegisterComp from '../LoginAndRegister/RegisterComp';
 import LoginComp from '../LoginAndRegister/LoginComp';
+import AdminPageComp from '../RolesComponents/AdminPageComp';
+import StudentPageComp from '../RolesComponents/StudentPageComp';
+import TeacherPageComp from '../RolesComponents/TeacherPageComp';
+import MyProfilePageComp from '../RolesComponents/MyProfilePageComp';
 
 
 const routing = createBrowserRouter([
@@ -20,8 +24,22 @@ const routing = createBrowserRouter([
       {path:'AllCourses',element:<AllCoursesComp/>},
       {path:'ContactUs',element:<ContactUsComp/>},
       {path:'Login',element:<LoginComp/>},
-      {path:'Register',element: <RegisterComp/>}
+      {path:'Register',element: <RegisterComp/>},
+      {path:'admin',element: <AdminPageComp/>},
+      {path:'student',element: <StudentPageComp/>},
+      {path:'teacher',element: <TeacherPageComp/>},
+
+      { path: 'Myprofile' , element: <MyProfilePageComp/> 
+        , children:[
+        {path:'admin',element:<AdminPageComp />},
+        {path:'student',element:<StudentPageComp />},
+        {path:'teacher',element:<TeacherPageComp />}
+      ]
+    },
+
     ] },
+
+    
     { path: '*', element: <PagenotFound /> },
   ]);
   
