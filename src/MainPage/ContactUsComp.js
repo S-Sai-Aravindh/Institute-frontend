@@ -22,17 +22,32 @@ const ContactUsComp = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const validationErrors = validate();
+    
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
     } else {
+      const { name, email, contact, message } = formData;
+      
+      // Display form data in the alert
+      alert(
+        `Form Submitted Successfully!\n\n` +
+        `Name: ${name}\n` +
+        `Email: ${email}\n` +
+        `Contact: ${contact}\n` +
+        `Message: ${message}`
+      );
+  
       console.log("Form Submitted:", formData);
-      alert("Thank you for contacting us!");
+  
+      // Reset form
       setFormData({ name: "", email: "", contact: "", message: "" });
       setErrors({});
     }
   };
+  
 
   return (
+    <div style={{background:"#FFF8E1"}} className='contactSection'>
     <div className="contact-container">
       <h2 className="contact-title">Get in Touch</h2>
       <form onSubmit={handleSubmit} className="contact-form">
@@ -84,8 +99,9 @@ const ContactUsComp = () => {
           {errors.message && <div className="error-text">{errors.message}</div>}
         </div>
 
-        <button type="submit" className="submit-button">Submit</button>
+        <button type="submit" className="submit-button btn btn-warning">Submit</button>
       </form>
+    </div>
     </div>
   );
 };

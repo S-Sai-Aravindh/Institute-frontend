@@ -1,19 +1,23 @@
 import React, { useState } from 'react';
-import cloud from "../assets/AllCoursesImages/cloud-computing.webp";
-import softwaretesting from "../assets/AllCoursesImages/software-testing.jpg"
+import fullstackdotnet from "../assets/AllCoursesImages/DotNetImg.jpeg";
+import fullstackpython from "../assets/AllCoursesImages/Pythonfullstackimg.jpg";
+import softwaretesting from "../assets/AllCoursesImages/SoftwareTesting.jpg";
+import FrontendReact from "../assets/AllCoursesImages/React.jpeg";
+import DevopsImg from "../assets/AllCoursesImages/Devopsimg.jpg";
+import SalesForce from "../assets/AllCoursesImages/Salesforce.jpg";
+import cloud from "../assets/AllCoursesImages/cloud-computing.jpg";
+import DataAnalyst from "../assets/AllCoursesImages/DataAnalytics.jpg";
+import CyberSecurity from "../assets/AllCoursesImages/Cybersecurity.jpg";
+import Android from "../assets/AllCoursesImages/Android.jpg";
+import AI from "../assets/AllCoursesImages/AI.jpg";
+import PowerBI from "../assets/AllCoursesImages/power-bi.jpg";
 const AllCoursesComp = () => {
   const courses = [
     {
-      // name: "Fullstack Development with .NET",
-      // image: "https://via.placeholder.com/150",
-      // batch: "Batch A",
-      // duration: "6 Months",
-      // description: "Master full-stack development using .NET framework.",
-      // details: "Learn front-end and back-end development, REST APIs, and database management with C# and ASP.NET."
-
+      
       
         name: "Fullstack Development with .NET",
-        image:  cloud,
+        image:  fullstackdotnet,
         batch: "Batch A",
         duration: "4 Months",
         description: "Master fullstack development with .NET.",
@@ -22,7 +26,7 @@ const AllCoursesComp = () => {
     },
     {
       name: "Fullstack Development with Python",
-      image: "/AllCoursesImages/cloud-computing.webp",
+      image: fullstackpython,
       batch: "Batch B",
       duration: "6 Months",
       description: "Become a full-stack developer using Python.",
@@ -38,7 +42,7 @@ const AllCoursesComp = () => {
     },
     {
       name: "Frontend Development with React",
-      image: "https://via.placeholder.com/150",
+      image: FrontendReact,
       batch: "Batch D",
       duration: "4 Months",
       description: "Build dynamic web applications with React.",
@@ -46,7 +50,7 @@ const AllCoursesComp = () => {
     },
     {
       name: "DevOps",
-      image: "https://via.placeholder.com/150",
+      image: DevopsImg ,
       batch: "Batch E",
       duration: "5 Months",
       description: "Master DevOps practices and tools.",
@@ -54,7 +58,7 @@ const AllCoursesComp = () => {
     },
     {
       name: "Salesforce",
-      image: "https://via.placeholder.com/150",
+      image: SalesForce,
       batch: "Batch F",
       duration: "4 Months",
       description: "Become proficient in Salesforce development and administration.",
@@ -62,7 +66,7 @@ const AllCoursesComp = () => {
     },
     {
       name: "Cloud Computing",
-      image: "cloud",
+      image: cloud,
       batch: "Batch G",
       duration: "5 Months",
       description: "Understand cloud infrastructure and services.",
@@ -70,7 +74,7 @@ const AllCoursesComp = () => {
     },
     {
       name: "Data Analyst",
-      image: "https://via.placeholder.com/150",
+      image: DataAnalyst,
       batch: "Batch H",
       duration: "4 Months",
       description: "Analyze and visualize data effectively.",
@@ -78,7 +82,7 @@ const AllCoursesComp = () => {
     },
     {
       name: "Cyber Security",
-      image: "https://via.placeholder.com/150",
+      image: CyberSecurity,
       batch: "Batch I",
       duration: "5 Months",
       description: "Learn the fundamentals of cyber security.",
@@ -86,7 +90,7 @@ const AllCoursesComp = () => {
     },
     {
       name: "Android Development",
-      image: "https://via.placeholder.com/150",
+      image: Android,
       batch: "Batch J",
       duration: "4 Months",
       description: "Develop robust Android applications.",
@@ -94,7 +98,7 @@ const AllCoursesComp = () => {
     },
     {
       name: "Artificial Intelligence (AI)",
-      image: "https://via.placeholder.com/150",
+      image: AI,
       batch: "Batch K",
       duration: "6 Months",
       description: "Dive into the world of AI and machine learning.",
@@ -102,7 +106,7 @@ const AllCoursesComp = () => {
     },
     {
       name: "Power BI",
-      image: "https://via.placeholder.com/150",
+      image: PowerBI,
       batch: "Batch L",
       duration: "3 Months",
       description: "Master data visualization with Power BI.",

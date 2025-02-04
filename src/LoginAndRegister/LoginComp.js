@@ -1,6 +1,8 @@
 import React from 'react'
 import { Link , useNavigate } from 'react-router-dom';
-// import LoginVisual from '../assets/Login/LoginVisual2.jpg'
+import './Style.css'
+
+import LoginVisual from '../assets/Login/LoginVisual2.jpg'
 const LoginComp = () => {
     return (
         <div className="container-fluid login-page">
@@ -8,7 +10,7 @@ const LoginComp = () => {
             {/* Left Side: Image Section */}
             <div className="col-md-6 d-flex justify-content-center align-items-center">
               <img 
-                // src={LoginVisual} 
+                src={LoginVisual} 
                 alt="Login Visual" 
                 className="img-fluid rounded "
               />
