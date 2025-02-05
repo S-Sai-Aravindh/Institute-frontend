@@ -9,41 +9,51 @@ const LoginComp = () => {
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
 
-    const handleLogin = async (e) => {
-        e.preventDefault();
-    
-        const email = e.target.email.value;
-        const password = e.target.password.value;
-    
+    const fetchUserDetails = async (email, password) => {
         try {
-            // Sending email and password as query parameters in GET request
             const response = await axios.get('http://localhost:5109/api/auth', {
-                params: {
-                    email,
-                    password
-                }
+                params: { email, password }
             });
     
-            // Check if the response contains a list of users
             const user = response.data.find((user) => user.email === email && user.password === password);
-            
+    
             if (!user) {
                 alert('Invalid credentials');
-                return;
+                return null;
             }
     
-            // Extract user data from the matched user
-            const { role, userId, name } = user;
-            console.log("Fetched Data from API:", user);
-            console.log("User ID:", userId);
-            console.log("User Name:", name);
+            console.log("Fetched User Details:", user);
+            return user;
     
-            // Store user information in sessionStorage
-            sessionStorage.setItem('userId', userId);
+        } catch (error) {
+            console.error("Error fetching user details:", error);
+            alert('Failed to fetch user details.');
+            return null;
+        }
+    };
+    
+    const authenticateUser = async (user) => {
+        try {
+            const { email, password, name, role, contactDetails } = user;
+    
+            const tokenResponse = await axios.post('http://localhost:5109/api/auth/login', {
+                email,
+                password,
+                name,
+                role,
+                contactDetails
+            });
+    
+            const { token } = tokenResponse.data;
+            console.log("Received Token:", token);
+    
+            // Store token and user details in sessionStorage
+            sessionStorage.setItem('authToken', token);
+            sessionStorage.setItem('userId', user.userId);
             sessionStorage.setItem('role', role);
             sessionStorage.setItem('email', email);
+    
             let path;
-            // Navigate based on role
             switch (role) {
                 case 'Admin':
                     path = '/Myprofile/admin';
@@ -60,21 +70,24 @@ const LoginComp = () => {
             window.location.href = path;
     
         } catch (error) {
-            if (error.response) {
-                // Server returned a response outside the 2xx range
-                alert(error.response.data.message || 'Failed to authenticate.');
-            } else if (error.request) {
-                // No response received
-                console.error("No response from server:", error.request);
-                alert('Failed to connect to the server.');
-            } else {
-                // Something else went wrong
-                console.error('Error:', error.message);
-                alert('An error occurred while processing your request.');
-            }
+            console.error("Authentication error:", error.response?.data);
+            alert(JSON.stringify(error.response?.data, null, 2));
+
         }
     };
     
+    const handleLogin = async (e) => {
+        e.preventDefault();
+        
+        const email = e.target.email.value;
+        const password = e.target.password.value;
+    
+        const user = await fetchUserDetails(email, password);
+        console.log("User: " , user);
+        if (user) {
+            await authenticateUser(user);
+        }
+    };
     
 
 
