@@ -9,9 +9,6 @@ const LoginComp = () => {
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
 
-
-
-
     const handleLogin = async (e) => {
         e.preventDefault();
     
@@ -41,20 +38,27 @@ const LoginComp = () => {
             console.log("User ID:", userId);
             console.log("User Name:", name);
     
+            // Store user information in sessionStorage
+            sessionStorage.setItem('userId', userId);
+            sessionStorage.setItem('role', role);
+            sessionStorage.setItem('email', email);
+            let path;
             // Navigate based on role
             switch (role) {
                 case 'Admin':
-                    navigate('/Myprofile/admin');
+                    path = '/Myprofile/admin';
                     break;
                 case 'Student':
-                    navigate('/student');
+                    path = '/Myprofile/student';
                     break;
                 case 'Teacher':
-                    navigate('/teacher');
+                    path = '/Myprofile/teacher';
                     break;
                 default:
-                    navigate('/');
+                    path = '/';
             }
+            window.location.href = path;
+    
         } catch (error) {
             if (error.response) {
                 // Server returned a response outside the 2xx range

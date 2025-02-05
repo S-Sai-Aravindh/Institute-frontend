@@ -13,11 +13,15 @@ import AdminPageComp from '../RolesComponents/AdminPageComp';
 import StudentPageComp from '../RolesComponents/StudentPageComp';
 import TeacherPageComp from '../RolesComponents/TeacherPageComp';
 import MyProfilePageComp from '../RolesComponents/MyProfilePageComp';
+import ProtectedRouting from './ProtectedRouting';
 
 
 const routing = createBrowserRouter([
     
-    { path: '', element: <MainPage /> ,children:[
+    { path: '', 
+      element: <MainPage /> 
+      // element: <ProtectedRouting Component={MainPage}/>
+      ,children:[
       {path:'',element:<HomeComp />},
       {path:'AboutUs',element:<AboutUsComp/>},
       {path:'Batches',element:<BatchesComp/>},
