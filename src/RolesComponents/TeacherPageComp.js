@@ -1,8 +1,11 @@
 import React from 'react'
+import { Outlet } from 'react-router-dom'
 
 const TeacherPageComp = () => {
   return (
-    <div>TeacherPageComp</div>
+    <div>TeacherPageComp
+      <Outlet></Outlet>
+    </div>
   )
 }
 

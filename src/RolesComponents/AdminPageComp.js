@@ -1,8 +1,12 @@
 import React from 'react'
+import { Outlet } from 'react-router-dom'
 
 const AdminPageComp = () => {
   return (
-    <div>AdminPageComp</div>
+    <div>
+      <Outlet></Outlet>
+    </div>
+
   )
 }
 

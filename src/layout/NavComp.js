@@ -24,31 +24,33 @@ const NavComp = () => {
         )}
       </div>
 
-      {location.pathname === '/Myprofile/admin' && (
+      {(location.pathname.startsWith('/Myprofile/admin') || location.pathname === '/Myprofile/admin') && (
         <div className="subnav-container">
-          <Link to="/" className="subnavbuttons">Admin</Link>{" "}
-          <Link to="/" className="subnavbuttons">About Us</Link>{" "}
-          <Link to="/" className="subnavbuttons">All Courses</Link>{" "}
-          <Link to="/" className="subnavbuttons">Batches</Link>{" "}
-          <Link to="/" className="subnavbuttons">Contact Us</Link>{" "}
+          <Link to="/Myprofile/admin" className="subnavbuttons">Dashboard</Link>{" "}
+          <Link to="/Myprofile/admin/students" className="subnavbuttons">Manage Students</Link>{" "}
+          <Link to="/Myprofile/admin/teachers" className="subnavbuttons">Manage Teachers</Link>{" "}
+          <Link to="/Myprofile/admin/courses" className="subnavbuttons">Manage Courses</Link>{" "}
+          <Link to="/Myprofile/admin/batches" className="subnavbuttons">Manage Batches</Link>{" "}
+          <Link to="/Myprofile/admin/reports" className="subnavbuttons">View Reports</Link>{" "}
         </div>
       )}
-      {location.pathname === '/Myprofile/student' && (
+
+
+      {( location.pathname.startsWith('/Myprofile/student') || location.pathname === '/Myprofile/student' ) &&(
         <div className="subnav-container">
-          <Link to="/" className="subnavbuttons">Student</Link>{" "}
-          <Link to="/" className="subnavbuttons">About Us</Link>{" "}
-          <Link to="/" className="subnavbuttons">All Courses</Link>{" "}
-          <Link to="/" className="subnavbuttons">Batches</Link>{" "}
-          <Link to="/" className="subnavbuttons">Contact Us</Link>{" "}
+          <Link to="/Myprofile/student" className="subnavbuttons">Dashboard</Link>{" "}
+          <Link to="/Myprofile/student/courses" className="subnavbuttons">Enroll in Courses</Link>{" "}
+          <Link to="/Myprofile/student/profile" className="subnavbuttons">Profile</Link>{" "}
+          <Link to="/Myprofile/student/batch" className="subnavbuttons">Batch Information</Link>{" "}
         </div>
       )}
-      {location.pathname === '/Myprofile/teacher' && (
+      {( location.pathname.startsWith('/Myprofile/teacher') || location.pathname === '/Myprofile/teacher') && (
         <div className="subnav-container">
-          <Link to="/" className="subnavbuttons">teacher</Link>{" "}
-          <Link to="/" className="subnavbuttons">About Us</Link>{" "}
-          <Link to="/" className="subnavbuttons">All Courses</Link>{" "}
-          <Link to="/" className="subnavbuttons">Batches</Link>{" "}
-          <Link to="/" className="subnavbuttons">Contact Us</Link>{" "}
+          <Link to="/Myprofile/teacher" className="subnavbuttons">Dashboard</Link>{" "}
+          <Link to="/Myprofile/teacher/enrolledcourses" className="subnavbuttons">My Courses</Link>{" "}
+          <Link to="/Myprofile/teacher/createcourse" className="subnavbuttons">Create Course</Link>{" "}
+          <Link to="/Myprofile/teacher/students" className="subnavbuttons">Manage Students</Link>{" "}
+          <Link to="/Myprofile/teacher/batches" className="subnavbuttons">Manage Batches</Link>{" "}
         </div>
       )}
 

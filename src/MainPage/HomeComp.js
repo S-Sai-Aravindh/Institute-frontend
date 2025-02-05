@@ -3,6 +3,7 @@ import Carousel from 'react-bootstrap/Carousel';
 import Carousel1  from '../assets/Carousel/Carousel1.jpg';
 import Carousel2  from '../assets/Carousel/Carousel2.webp';
 import Carousel3  from '../assets/Carousel/Carousel3.jpg';
+import { useNavigate } from 'react-router-dom';
 
 // import ContactPageIcon from '@mui/icons-material/ContactPage';
 import './Style.css';
@@ -62,6 +63,12 @@ const testimonials = [
 
 
 const HomeComp = () => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    window.location.href="contactus";
+    // navigate('/contactus');
+  };
   return (
     <div style={{ padding: '20px', fontFamily: 'Arial, sans-serif' }} className='HomePageComp'>
 
@@ -193,7 +200,7 @@ const HomeComp = () => {
       <section style={{ textAlign: 'center' , justifyContent : 'center' , display: 'flex' }}>
       <div className="KnowSection">
             <h2 className="know-heading">To Know More</h2>
-            <button className='HomeContactUs'>Contact Us</button>
+            <button className='HomeContactUs'onClick={handleClick} >Contact Us</button>
               {/* <ContactPageIcon/> */}
           </div>
       </section>

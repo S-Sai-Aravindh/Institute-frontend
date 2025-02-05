@@ -1,8 +1,11 @@
 import React from 'react'
+import { Outlet } from 'react-router-dom'
 
 const MyProfilePageComp = () => {
   return (
-    <div>MyProfilePageComp</div>
+    <div>
+    <Outlet></Outlet>
+    </div>
   )
 }
 
