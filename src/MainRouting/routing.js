@@ -24,6 +24,7 @@ import TeacherDashboard from '../Components/TeacherDashboard';
 import EnrolledCourses from '../Components/EnrolledCourses';
 import CreateCourse from '../Components/CreateCourse';
 import AdminDashboard from '../Components/AdminDashboard';
+import ForgotPassComp from '../LoginAndRegister/ForgotPassComp';
 
 
 const routing = createBrowserRouter([
@@ -42,6 +43,7 @@ const routing = createBrowserRouter([
       {path:'admin',element: <AdminPageComp/>},
       {path:'student',element: <StudentPageComp/>},
       {path:'teacher',element: <TeacherPageComp/>},
+      {path:'forgot-password',element: <ForgotPassComp/>},
 
       { path: 'Myprofile' , element: <MyProfilePageComp/> 
         , children:[

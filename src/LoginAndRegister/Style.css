@@ -47,3 +47,58 @@ color: #FF8E35; /* Matches the brand color */
 text-transform: uppercase;
 letter-spacing: 3px;
 }
+
+.ForgotContainer{
+  color: #FF8E35;
+  /* display: flex; */
+  /* justify-content: center; */
+  }
+
+ .forinput {
+  /* border: 2px solid black !important; */
+  /* opacity: 25%; */
+ }
+  .ForgotForm{
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+  .ForgotHeader{
+  margin-top: 10px;
+  font-size: 35px;
+  color: #FF8E35; /* Matches the brand color */
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  }
+
+  .ForgotLogin {
+    margin-top: 30px;
+    text-decoration: none;
+    background-color: #FF8E35; /* Optional: Add background color */
+    color: white; /* Optional: Change text color */
+    padding: 10px 20px; /* Optional: Add padding */
+    border: none; /* Optional: Remove border */
+    border-radius: 5px; /* Optional: Add border radius */
+    cursor: pointer; /* Optional: Change cursor on hover */
+  }
+
+
+  .ForgotHeader form {
+    display: flex;
+    flex-direction: column; /* Stack the form elements vertically */
+  }
+  
+  .ForgotHeader label {
+    margin-top: 10px; /* Add space above labels */
+  }
+  
+  .ForgotHeader input {
+
+    padding: 10px; /* Add padding to input fields */
+    margin-top: 5px; /* Add space above input fields */
+    border: 1px solid #ccc; /* Add border to input fields */
+    border-radius: 5px; /* Add border radius to input fields */
+  }
+  
+  .ForgotHeader p {
+    margin-top: 10px; /* Add space above messages */
+  }
