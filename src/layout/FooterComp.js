@@ -3,6 +3,10 @@ import Logo from '../assets/Logo/logoimgfinal.jpg';
 import { Link } from 'react-router-dom';
 
 const FooterComp = () => {
+
+  const handleLinkClick = (e) => {
+    window.scrollTo(0, 0);
+};
   return (
     <div>
 
@@ -17,11 +21,11 @@ const FooterComp = () => {
           <div className='FootQuickLinks'>
               <h3 className='Footaddresscomp'>Quick Links</h3>
               <hr></hr>
-                    <Link to="" className="footerlinks">Home</Link>{" "}<br></br>
-                    <Link to="" className="footerlinks">About Us</Link>{" "}<br></br>
-                    <Link to="" className="footerlinks">All Courses</Link>{" "}<br></br>
-                    <Link to="" className="footerlinks">Batches</Link>{" "}<br></br>
-                    <Link to="" className="footerlinks">Contact Us</Link>{" "}<br></br>
+                    <Link to="/" className="footerlinks" onClick={handleLinkClick}>Home</Link>{" "}<br></br>
+                    <Link to="/AboutUs" className="footerlinks" onClick={handleLinkClick}>About Us</Link>{" "}<br></br>
+                    <Link to="/AllCourses" className="footerlinks" onClick={handleLinkClick}>All Courses</Link>{" "}<br></br>
+                    <Link to="/Batches" className="footerlinks" onClick={handleLinkClick}>Batches</Link>{" "}<br></br>
+                    <Link to="/ContactUs" className="footerlinks" onClick={handleLinkClick}>Contact Us</Link>{" "}<br></br>
           </div>
 
           <div>

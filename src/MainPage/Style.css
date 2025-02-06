@@ -218,6 +218,7 @@
 }
 
 .card-title {
+  height: 50px;
   font-size: 22px;
   font-weight: 700;
   margin-bottom: 10px;
@@ -274,6 +275,13 @@
   color: #FF8E35; /* Matches the brand color */
   text-transform: uppercase;
   letter-spacing: 3px;
+}
+
+.AllCourseApply{
+  font-size: 20px;
+  justify-content: center;
+  text-decoration: none;
+  color: black;
 }
 
 /* ---------------------Batch comp----------------------------------- */

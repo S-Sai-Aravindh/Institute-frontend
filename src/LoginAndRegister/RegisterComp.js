@@ -22,6 +22,7 @@ const RegisterComp = () => {
     const validate = () => {
         const newErrors = {};
         if (!formData.name.trim()) newErrors.name = 'Name is required';
+        else if (!/^[A-Za-z\s]{3,}$/.test(formData.name)) newErrors.name = "Invalid Name";
         if (!formData.email.trim()) newErrors.email = 'Email is required';
         else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) newErrors.email = 'Invalid email format';
     

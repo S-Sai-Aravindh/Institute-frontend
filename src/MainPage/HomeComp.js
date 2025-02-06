@@ -69,6 +69,10 @@ const HomeComp = () => {
     window.location.href="contactus";
     // navigate('/contactus');
   };
+
+  const handelLearnmore = () =>{
+    window.location.href='AllCourses';
+  }
   return (
     <div style={{ padding: '20px', fontFamily: 'Arial, sans-serif' }} className='HomePageComp'>
 
@@ -159,7 +163,7 @@ const HomeComp = () => {
               <h3 style={{ fontSize: '20px', fontWeight: '600', marginBottom: '10px' }} className='FeatTitle'>{program.title}</h3>
               <p style={{ color: '#666' }} className='FeatDuration'>{program.duration}</p>
               <p style={{ color: '#333', marginBottom: '15px' , textAlign: "center" , width:"215px" }} className='FeatHigh'>{program.highlights}</p>
-              <button style={{ padding: '10px 20px', background: 'rgb(243, 179, 74)', color: 'rgb(55, 55, 55)', border: 'none', borderRadius: '25px', cursor: 'pointer' }}>Learn More</button>
+              <button style={{ padding: '10px 20px', background: 'rgb(243, 179, 74)', color: 'rgb(55, 55, 55)', border: 'none', borderRadius: '25px', cursor: 'pointer' }} onClick={handelLearnmore}>Learn More</button>
             </div>
           ))}
         </div>
