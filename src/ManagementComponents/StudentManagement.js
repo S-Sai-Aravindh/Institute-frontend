@@ -55,7 +55,7 @@ const StudentTable = () => {
             console.error("Student ID is required for update");
             return;
         }
-
+    
         const dataToSend = {
             studentId: editedStudent.studentId,
             user: {
@@ -63,31 +63,27 @@ const StudentTable = () => {
                 email: editedStudent.email,
                 contactDetails: editedStudent.contactDetails,
             },
-            batchId: editedStudent.batchId || null, // Ensure batchId exists
+            batchId: editedStudent.batchId || null, // Ensure batchId is sent
         };
-
+    
         console.log("Data to be sent:", dataToSend);
-
+    
         try {
-            const response = await axios.put(
+            await axios.put(
                 `http://localhost:5109/api/admin/students/${editedStudent.studentId}`,
                 dataToSend
             );
-
-            // Update the frontend table with new data
-            setStudents((prevStudents) =>
-                prevStudents.map((student) =>
-                    student.studentId === editedStudent.studentId
-                        ? { ...student, ...response.data }
-                        : student
-                )
-            );
-            window.location.reload();
-            setOpen(false); 
+    
+            // Fetch updated student data from the backend
+            const response = await axios.get("http://localhost:5109/api/admin/students");
+            setStudents(response.data); 
+    
+            setOpen(false);
         } catch (error) {
             console.error("Error saving student data:", error);
         }
     };
+    
 
     const handleConfirmDelete = async (studentId) => {
         if (studentIdToDelete) {
@@ -134,6 +130,7 @@ const StudentTable = () => {
                         <th className="table-header-cell">Name</th>
                         <th className="table-header-cell">Email</th>
                         <th className="table-header-cell">Contact Details</th>
+                        <th className="table-header-cell">Batch ID</th>
                         <th className="table-header-cell">Batch Name</th>
                         <th className="table-header-cell">Batch Timing</th>
                         <th className="table-header-cell">Batch Type</th>
@@ -149,6 +146,7 @@ const StudentTable = () => {
                             <td className="table-cell">{student.user?.name || "N/A"}</td>
                             <td className="table-cell">{student.user?.email || "N/A"}</td>
                             <td className="table-cell">{student.user?.contactDetails || "N/A"}</td>
+                            <td className="table-cell">{student.batch?.batchId || "N/A"}</td> {/* Batch ID */}
                             <td className="table-cell">{student.batch?.batchName || "N/A"}</td>
                             <td className="table-cell">{student.batch?.batchTiming || "N/A"}</td>
                             <td className="table-cell">{student.batch?.batchType || "N/A"}</td>
