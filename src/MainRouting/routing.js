@@ -48,7 +48,7 @@ const routing = createBrowserRouter([
       { path: 'Myprofile' , element: <MyProfilePageComp/> 
         , children:[
         {path:'admin',element:<AdminPageComp />, children:[
-          {path:'',element:<AdminDashboard />},
+          {path:'dashboard',element:<AdminDashboard />},
           {path:'students',element:<StudentManagement />},
           {path:'teachers',element:<TeacherManagement />},
           {path:'courses',element:<CourseManagement />},

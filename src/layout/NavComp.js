@@ -24,7 +24,7 @@ const NavComp = () => {
         )}
       </div>
 
-      {(location.pathname.startsWith('/Myprofile/admin') || location.pathname === '/Myprofile/admin') && (
+      {/* {(location.pathname.startsWith('/Myprofile/admin') || location.pathname === '/Myprofile/admin') && (
         <div className="subnav-container">
           <Link to="/Myprofile/admin" className="subnavbuttons">Dashboard</Link>{" "}
           <Link to="/Myprofile/admin/students" className="subnavbuttons">Manage Students</Link>{" "}
@@ -52,7 +52,7 @@ const NavComp = () => {
           <Link to="/Myprofile/teacher/students" className="subnavbuttons">Manage Students</Link>{" "}
           <Link to="/Myprofile/teacher/batches" className="subnavbuttons">Manage Batches</Link>{" "}
         </div>
-      )}
+      )} */}
 
     </div>
   );

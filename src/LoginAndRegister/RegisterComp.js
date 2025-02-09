@@ -1,16 +1,17 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 
 const RegisterComp = () => {
     const [formData, setFormData] = useState({
         name: '',
         email: '',
-        mobile: '',
         password: '',
-        role: '', // Start with an empty role
+        role: '',
+        contactDetails: '', // Updated from "mobile"
     });
-    
+
     const [errors, setErrors] = useState({});
-    
+
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData({
@@ -18,39 +19,47 @@ const RegisterComp = () => {
             [name]: value,
         });
     };
-    
+
     const validate = () => {
         const newErrors = {};
         if (!formData.name.trim()) newErrors.name = 'Name is required';
         else if (!/^[A-Za-z\s]{3,}$/.test(formData.name)) newErrors.name = "Invalid Name";
+        
         if (!formData.email.trim()) newErrors.email = 'Email is required';
         else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) newErrors.email = 'Invalid email format';
-    
-        if (!formData.mobile.trim()) newErrors.mobile = 'Mobile number is required';
-        else if (!/^\d{10}$/.test(formData.mobile)) newErrors.mobile = 'Mobile number should be 10 digits';
-    
+
+        if (!formData.contactDetails.trim()) newErrors.contactDetails = 'Contact number is required';
+        else if (!/^\d{10}$/.test(formData.contactDetails)) newErrors.contactDetails = 'Contact number should be 10 digits';
+
         if (!formData.password.trim()) newErrors.password = 'Password is required';
         else if (formData.password.length < 6) newErrors.password = 'Password must be at least 6 characters';
-        
-        if (!formData.role || formData.role === 'Select') newErrors.role = 'Role is required';  // Validate role
-        
+
+        if (!formData.role || formData.role === 'Select') newErrors.role = 'Role is required';
+
         setErrors(newErrors);
         return Object.keys(newErrors).length === 0;
     };
-    
-    const handleSubmit = (e) => {
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
         if (validate()) {
-            console.log('Registration Successful', formData);
+            try {
+                const response = await axios.post("http://localhost:5109/api/auth/register", formData, {
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                });
 
-            // Show alert for successful registration
-            alert('Registered Successfully');
-
-            // Redirect to the login page
-            window.location.href = '/Login'; // Adjust this URL based on your application's routing
+                alert("Registered Successfully");
+                console.log("Register data:", response.data);
+                window.location.href = "/Login";
+            } catch (error) {
+                console.error("Error:", error);
+                alert(error.response?.data?.message || "Registration failed");
+            }
         }
     };
-    
+
     return (
         <div className='min-vh-100 d-flex align-items-center justify-content-center' style={{ backgroundColor: "#FFF8E1" }}>
             <div className="shadow-lg p-4" style={{ backgroundColor: "white" }}>
@@ -83,16 +92,16 @@ const RegisterComp = () => {
                     </div>
 
                     <div className="mb-3">
-                        <label className="form-label">Mobile Number</label>
+                        <label className="form-label">Contact Number</label>
                         <input
                             type="text"
-                            name="mobile"
-                            value={formData.mobile}
+                            name="contactDetails"
+                            value={formData.contactDetails}
                             onChange={handleChange}
-                            className={`form-control ${errors.mobile ? 'is-invalid' : ''}`}
-                            placeholder="Enter your mobile number"
+                            className={`form-control ${errors.contactDetails ? 'is-invalid' : ''}`}
+                            placeholder="Enter your contact number"
                         />
-                        {errors.mobile && <div className="invalid-feedback">{errors.mobile}</div>}
+                        {errors.contactDetails && <div className="invalid-feedback">{errors.contactDetails}</div>}
                     </div>
 
                     <div className="mb-3">
@@ -103,7 +112,7 @@ const RegisterComp = () => {
                             onChange={handleChange}
                             className={`form-select ${errors.role ? 'is-invalid' : ''}`}
                         >
-                            <option value="">Select</option> {/* Placeholder option */}
+                            <option value="">Select</option>
                             <option value="Student">Student</option>
                             <option value="Teacher">Teacher</option>
                         </select>
@@ -123,14 +132,11 @@ const RegisterComp = () => {
                         {errors.password && <div className="invalid-feedback">{errors.password}</div>}
                     </div>
 
-                    <button
-                        type="submit"
-                        className="btn btn-warning w-100 fw-bold"
-                    >
+                    <button type="submit" className="btn btn-warning w-100 fw-bold">
                         Register
                     </button>
                     <div className="text-center mt-3 LoginRegisterText">
-                        <p>Already have an account ? 
+                        <p>Already have an account? 
                             <a href="Login" className='RegisterLogin'> Login here</a>
                         </p>
                     </div>

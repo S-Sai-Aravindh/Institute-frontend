@@ -52,17 +52,18 @@ const LoginComp = () => {
             sessionStorage.setItem('userId', user.userId);
             sessionStorage.setItem('role', role);
             sessionStorage.setItem('email', email);
+            sessionStorage.setItem('name', name);
     
             let path;
             switch (role) {
                 case 'Admin':
-                    path = '/Myprofile/admin';
+                    path = '/Myprofile/admin/dashboard';
                     break;
                 case 'Student':
-                    path = '/Myprofile/student';
+                    path = '/Myprofile/student/dashboard';
                     break;
                 case 'Teacher':
-                    path = '/Myprofile/teacher';
+                    path = '/Myprofile/teacher/dashboard';
                     break;
                 default:
                     path = '/';

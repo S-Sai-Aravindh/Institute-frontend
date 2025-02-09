@@ -1,0 +1,91 @@
+.student-table-container {
+    padding: 20px;
+    max-width: 90%;
+    margin: 0 auto;
+}
+
+.table-heading {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.student-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.table-header {
+    background-color: #f1f1f1;
+}
+
+.table-header-cell {
+    padding: 12px;
+    text-align: left;
+    font-weight: bold;
+    border: 1px solid #ddd;
+}
+
+.table-row {
+    transition: background-color 0.3s ease;
+}
+
+.table-row:hover {
+    background-color: #f9f9f9;
+}
+
+.table-cell {
+    padding: 12px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+.Studenteditinput{
+    margin-top: 18px !important;
+}
+.TeacherEditInput{
+    margin-top: 18px !important;
+}
+
+.action-button {
+    padding: 8px 16px;
+    margin: 4px;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+.teacheraction-button {
+    padding: 8px 16px;
+    margin: 4px;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.table-cell .teacheraction-button{
+    background-color: #1976d2;
+    color: white;
+}
+
+.action-button:first-child { /* Edit Button */
+    background-color: #1976d2;
+    color: white;
+}
+
+.action-button:first-child:hover {
+    background-color: #115293;
+}
+
+.action-button:last-child { /* Delete Button */
+    background-color: #d32f2f;
+    color: white;
+}
+
+.action-button:last-child:hover {
+    background-color: #9a0007;
+}

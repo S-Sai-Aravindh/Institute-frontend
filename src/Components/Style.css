@@ -1,0 +1,64 @@
+.admin-dashboard-container {
+    padding: 40px;
+    /* max-width: 900px; */
+    width: 80%;
+    margin: 40px auto;
+    background-color: #f8f9fa; /* Light gray background */
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .admin-details {
+    background-color: #ffffff; /* Soft white background */
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    display: grid;
+    gap: 20px;
+  }
+  
+  .admin-detail-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    font-size: 1rem;
+  }
+  
+  .admin-detail-item strong {
+    font-weight: bold;
+    margin-right: 10px;
+    flex: 1;
+  }
+  
+  .admin-detail-item span {
+    flex: 2;
+  }
+  
+  .loading-message {
+    text-align: center;
+    font-size: 18px;
+    color: #adb5bd; /* Muted gray text */
+  }
+
+  .my-details-title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #445566;
+    text-align: center;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+  }
+  
+  .adminEditbutton{
+    margin-top: 20px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100px;
+  }
+
+  .adminEditbutton:hover{
+    background-color: #007bff;
+  color: white;
+  }
