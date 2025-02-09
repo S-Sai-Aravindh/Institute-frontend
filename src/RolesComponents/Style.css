@@ -43,3 +43,53 @@
     justify-content: center;
     align-items: center;
 }
+
+.StudentPageCompContainer{
+    display: flex;
+    flex-direction: row;
+    background-color: #FFF8E1;
+}
+
+.StudentPageNav{
+    /* display: flex; */
+    align-items: center;
+    margin-left: 40px;
+    margin-top: 80px;
+    margin-bottom: 30px;
+}
+
+.StudentPageOutlet{
+    width: 100%;
+    height: 100%;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.TeacherPageCompContainer{
+    display: flex;
+    flex-direction: row;
+    background-color: #FFF8E1;
+}
+
+.TeacherPageNav{
+    /* display: flex; */
+    align-items: center;
+    margin-left: 40px;
+    margin-top: 80px;
+    margin-bottom: 30px;
+}
+
+.TeacherPageOutlet{
+    width: 100%;
+    height: 100%;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

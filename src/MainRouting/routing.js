@@ -56,13 +56,13 @@ const routing = createBrowserRouter([
           {path:'reports',element:<Reports />}
         ]},
         {path:'student',element:<StudentPageComp /> , children:[
-          {path:'',element:<StudentDashboard />}, 
+          {path:'dashboard',element:<StudentDashboard />}, 
           {path:'courses',element:<BatchManagement />}, 
         ]},
         {path:'teacher',element:<TeacherPageComp /> , children:[
-          {path:'',element:<TeacherDashboard />},
+          {path:'dashboard',element:<TeacherDashboard />},
           {path:'enrolledcourses',element:<EnrolledCourses />},
-          {path:'createcourse',element:<CreateCourse />},
+          {path:'createcourse',element:<CourseManagement />},
           {path:'students',element:<StudentManagement />},
           {path:'batches',element:<BatchManagement />},
         ]}
