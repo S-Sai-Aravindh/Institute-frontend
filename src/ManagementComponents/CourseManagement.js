@@ -8,6 +8,7 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import "./Style.css";
+import { Email } from "@mui/icons-material";
 
 const CourseManagement = () => {
     const [courses, setCourses] = useState([]);
@@ -68,7 +69,10 @@ const CourseManagement = () => {
     useEffect(() => {
         axios
             .get("http://localhost:5109/api/admin/courses")
-            .then((response) => setCourses(response.data))
+            .then((response) => {
+                setCourses(response.data)
+                console.log("Courses details:",response.data)
+            })
             .catch((error) => console.error("Error fetching courses:", error));
     }, []);
 
@@ -77,7 +81,9 @@ const CourseManagement = () => {
             courseId: course.courseId,
             courseName: course.courseName,
             description: course.description,
+            teacherId: course.teacher.teacherId
         });
+        console.log("Selected Course: ",editedCourse)
         setOpen(true);
     };
 
@@ -91,7 +97,12 @@ const CourseManagement = () => {
             courseId: editedCourse.courseId,
             courseName: editedCourse.courseName,
             description: editedCourse.description,
+            Teacher: {
+                TeacherId: editedCourse.teacherId, 
+            },
         };
+
+        console.log("Data to send:",dataToSend);
 
         try {
             await axios.put(
@@ -145,13 +156,14 @@ const CourseManagement = () => {
     return (
         <div className="course-management-container">
             <h2 className="table-heading">Course Management</h2>
-            <button variant="contained" onClick={() => setIsDialogOpen(true)}>Create Course</button>
+            <button className="create-course-btn" onClick={() => setIsDialogOpen(true)}>Create Course</button>
             <table className="course-table">
                 <thead>
                     <tr className="table-header">
                         <th className="table-header-cell">Course ID</th>
                         <th className="table-header-cell">Course Name</th>
                         <th className="table-header-cell">Description</th>
+                        <th className="table-header-cell">Teacher Assigned (ID)</th>
                         <th className="table-header-cell">Action</th>
                     </tr>
                 </thead>
@@ -161,6 +173,7 @@ const CourseManagement = () => {
                             <td className="table-cell">{course.courseId}</td>
                             <td className="table-cell">{course.courseName}</td>
                             <td className="table-cell">{course.description}</td>
+                            <td className="table-cell">{course.teacher.teacherId}</td>
                             <td className="table-cell">
                                 <button className="action-button" onClick={() => handleEdit(course)}>Edit</button>
                                 <button className="action-button" onClick={() => handleDelClickOpen(course.courseId)}>Delete</button>
@@ -212,6 +225,7 @@ const CourseManagement = () => {
                     <DialogContentText>Update course details below.</DialogContentText>
                     <TextField label="Course Name" name="courseName" fullWidth value={editedCourse.courseName} onChange={handleChange} className="Studenteditinput" />
                     <TextField label="Description" name="description" fullWidth value={editedCourse.description} onChange={handleChange} className="Studenteditinput" />
+                    <TextField label="Teacher ID" name="teacherId" fullWidth value={editedCourse.teacherId} onChange={handleChange} className="Studenteditinput" />
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={handleClose}>Cancel</Button>

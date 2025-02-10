@@ -94,3 +94,35 @@
 .action-button:last-child:hover {
     background-color: #9a0007;
 }
+
+.table-heading {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  
+
+.course-table{
+    margin-top: 20px;
+}
+
+
+.create-course-btn {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .create-course-btn:hover {
+    background-color: #0056b3;
+  }
+  

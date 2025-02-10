@@ -106,9 +106,9 @@ const TeacherTable = () => {
         }
     
         // Uncommenting and using editedTeacher.courses directly since it's already an array
-    const coursesArray = editedTeacher.courses.length > 0 
-    ? editedTeacher.courses.map(courseName => ({ courseName })) // Create the array of objects
-    : [];
+    // const coursesArray = editedTeacher.courses.length > 0 
+    // ? editedTeacher.courses.map(courseName => ({ courseName })) // Create the array of objects
+    // : [];
     
         const dataToSend = {
             teacherId: editedTeacher.teacherId,
@@ -120,7 +120,7 @@ const TeacherTable = () => {
                 role: "Teacher", // If role is static as "Teacher"
             },
             subjectSpecialization: editedTeacher.subjectSpecialization,
-            courses: coursesArray, // Send courses as an array of objects
+            // courses: coursesArray, // Send courses as an array of objects
         };
     
         console.log("Data to be sent:", dataToSend);
@@ -136,21 +136,33 @@ const TeacherTable = () => {
             console.log("Response from API:", response.data);
     
             // Ensure that response.data contains the expected structure
-            setTeachers((prevTeachers) =>
-                prevTeachers.map((teacher) =>
-                    teacher.teacherId === editedTeacher.teacherId
-                        ? { ...teacher, ...response.data } // Merge the response data to update teacher
-                        : teacher
-                )
-            );
+            // setTeachers((prevTeachers) =>
+            //     prevTeachers.map((teacher) =>
+            //         teacher.teacherId === editedTeacher.teacherId
+            //             ? { ...teacher, ...response.data } // Merge the response data to update teacher
+            //             : teacher
+            //     )
+            // );
             // window.location.reload();
             setOpen(false); // Close the dialog after saving
+                setTimeout(() => {
+                    setOpen(false); 
+                    window.location.reload();
+                    // Close again in case state update delays it
+                }, 100);
+// Close the dialog after saving
         } 
         catch (error) {
-            console.error("Error saving teacher data:", error);
-            if (error.response) {
-                console.error("Error response data:", error.response.data);
-            }
+            // console.error("Error saving teacher data:", error);
+            // if (error.response) {
+            //     console.error("Error response data:", error.response.data);
+            // }
+            setOpen(false); // Close the dialog after saving
+                setTimeout(() => {
+                    setOpen(false); 
+                    window.location.reload();
+                    // Close again in case state update delays it
+                }, 100);
         }
     };
     
@@ -223,13 +235,13 @@ const TeacherTable = () => {
                     <TextField label="Subject Specialization" name="subjectSpecialization" fullWidth value={editedTeacher.subjectSpecialization} onChange={handleChange} className="TeacherEditInput"/>
                 
                      {/* Replace the TextField for courses with the MultipleSelectCheckmarks component */}
-        <MultiplSelectChecks
+        {/* <MultiplSelectChecks
            personName={editedTeacher.courses} // This is now an array
            setPersonName={(courses) => setEditedTeacher({ ...editedTeacher, courses })} 
            availableCourses={courseNames} // Pass the available courses to the component
         //    className="TeacherCheckboxEditInput"
         />
-                
+                 */}
                 
                 
                 

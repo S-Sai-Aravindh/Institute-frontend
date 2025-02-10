@@ -30,7 +30,9 @@ const StudentTable = () => {
     useEffect(() => {
         axios
             .get("http://localhost:5109/api/admin/students")
-            .then((response) => setStudents(response.data))
+            .then((response) => {setStudents(response.data)
+                console.log("Student data: ",response.data)
+            })
             .catch((error) => console.error("Error fetching students:", error));
     }, []);
 
@@ -40,7 +42,7 @@ const StudentTable = () => {
             name: student.user?.name || "",
             email: student.user?.email || "",
             contactDetails: student.user?.contactDetails || "",
-            batchId: student.batch?.batchId || "", // Ensure batchId is included for updates
+            batchId: student?.batchId || "", // Ensure batchId is included for updates
             batchName: student.batch?.batchName || "",
             batchTiming: student.batch?.batchTiming || "",
             batchType: student.batch?.batchType || "",
@@ -146,7 +148,7 @@ const StudentTable = () => {
                             <td className="table-cell">{student.user?.name || "N/A"}</td>
                             <td className="table-cell">{student.user?.email || "N/A"}</td>
                             <td className="table-cell">{student.user?.contactDetails || "N/A"}</td>
-                            <td className="table-cell">{student.batch?.batchId || "N/A"}</td> {/* Batch ID */}
+                            <td className="table-cell">{student?.batchId || "N/A"}</td> {/* Batch ID */}
                             <td className="table-cell">{student.batch?.batchName || "N/A"}</td>
                             <td className="table-cell">{student.batch?.batchTiming || "N/A"}</td>
                             <td className="table-cell">{student.batch?.batchType || "N/A"}</td>
@@ -169,11 +171,12 @@ const StudentTable = () => {
                     <TextField label="Name" name="name" fullWidth value={editedStudent.name} onChange={handleChange} className="Studenteditinput"/>
                     <TextField label="Email" name="email" fullWidth value={editedStudent.email} onChange={handleChange} className="Studenteditinput"/>
                     <TextField label="Contact Details" name="contactDetails" fullWidth value={editedStudent.contactDetails} onChange={handleChange} className="Studenteditinput"/>
-                    <TextField label="Batch Name" name="batchName" fullWidth value={editedStudent.batchName} onChange={handleChange} className="Studenteditinput"/>
-                    <TextField label="Batch Timing" name="batchTiming" fullWidth value={editedStudent.batchTiming} onChange={handleChange} className="Studenteditinput"/>
-                    <TextField label="Batch Type" name="batchType" fullWidth value={editedStudent.batchType} onChange={handleChange} className="Studenteditinput"/>
-                    <TextField label="Course Name" name="courseName" fullWidth value={editedStudent.courseName} onChange={handleChange} className="Studenteditinput"/>
-                    <TextField label="Course Description" name="courseDescription" fullWidth value={editedStudent.courseDescription} onChange={handleChange} className="Studenteditinput" />
+                    <TextField label="Batch Id" name="batchId" fullWidth value={editedStudent.batchId} onChange={handleChange} className="Studenteditinput"/>
+                    {/* <TextField label="Batch Name" name="batchName" fullWidth value={editedStudent.batchName} onChange={handleChange} className="Studenteditinput"/> */}
+                    {/* <TextField label="Batch Timing" name="batchTiming" fullWidth value={editedStudent.batchTiming} onChange={handleChange} className="Studenteditinput"/> */}
+                    {/* <TextField label="Batch Type" name="batchType" fullWidth value={editedStudent.batchType} onChange={handleChange} className="Studenteditinput"/> */}
+                    {/* <TextField label="Course Name" name="courseName" fullWidth value={editedStudent.courseName} onChange={handleChange} className="Studenteditinput"/> */}
+                    {/* <TextField label="Course Description" name="courseDescription" fullWidth value={editedStudent.courseDescription} onChange={handleChange} className="Studenteditinput" /> */}
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={handleClose}>Cancel</Button>

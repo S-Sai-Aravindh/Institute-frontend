@@ -16,14 +16,79 @@ const BatchManagement = () => {
         batchName: "",
         batchTiming: "",
         batchType: "",
-        courseName: "",
-        teacherName: "",
+        courseId: "",
+        teacherId: "",
+
     });
+
+    // create batch start 
+
+    const [isDialogOpen, setIsDialogOpen] = useState(false);
+    const [batchValues, setBatchValues] = useState({
+        batchName: "",
+        batchTiming: "",
+        batchType: "",
+        courseId: "",
+        teacherId: "",
+    });
+
+    const handleCreateOpen = () => {
+        setIsDialogOpen(true);
+    };
+
+    const handleCreateClose = () => {
+        setIsDialogOpen(false);
+    };
+
+    const handleCreateChange = (event) => {
+        const { name, value } = event.target;
+        setBatchValues({ ...batchValues, [name]: value });
+    };
+
+    const handleCreateSave = async (event) => {
+    event.preventDefault();
+
+    // Check if required fields are missing
+    if (!batchValues.batchName || !batchValues.batchTiming || !batchValues.batchType || !batchValues.courseId || !batchValues.teacherId) {
+        console.error("All fields are required");
+        return;
+    }
+
+    const dataToSend = {
+        batchName: batchValues.batchName,
+        batchTiming: batchValues.batchTiming,
+        batchType: batchValues.batchType,
+        courseId: batchValues.courseId,  // Ensure it's a valid ID, not course name
+        teacherId: batchValues.teacherId,  // Ensure it's a valid ID, not teacher name
+    };
+
+    try {
+        const response = await axios.post("http://localhost:5109/api/admin/batches", dataToSend);
+        console.log("Batch created:", response.data);
+
+        setBatches([...batches, response.data]);
+        setIsDialogOpen(false);
+        setBatchValues({ batchName: "", batchTiming: "", batchType: "", courseId: "", teacherId: "" });
+    } catch (error) {
+        console.error("Error creating batch:", error.response ? error.response.data : error.message);
+        if (error.response && error.response.data) {
+            alert("Error: " + error.response.data.message || "Invalid course or teacher data.");
+        }
+    }
+};
+
+    
+
+
+    // create batch end 
+
 
     useEffect(() => {
         axios
             .get("http://localhost:5109/api/admin/batches")
-            .then((response) => setBatches(response.data))
+            .then((response) => {setBatches(response.data)
+                console.log("Batch details: ",response.data)
+            })
             .catch((error) => console.error("Error fetching batches:", error));
     }, []);
 
@@ -33,53 +98,63 @@ const BatchManagement = () => {
             batchName: batch.batchName,
             batchTiming: batch.batchTiming,
             batchType: batch.batchType,
-            courseName: batch.course.courseName,
-            teacherName: batch.course.teacher.user.name,
+            courseId: batch.course.courseId,  // Store courseId instead of courseName
+            teacherId: batch.course.teacher.teacherId,
         });
         setOpen(true);
     };
+    
 
     const handleSave = async () => {
         if (!editedBatch.batchId) {
             console.error("Batch ID is required for update");
             return;
         }
-
+    
         const dataToSend = {
             batchId: editedBatch.batchId,
             batchName: editedBatch.batchName,
             batchTiming: editedBatch.batchTiming,
             batchType: editedBatch.batchType,
-            courseName: editedBatch.courseName,
-            teacherName: editedBatch.teacherName,
+            courseId: editedBatch.courseId,  // Send courseId, not courseName  // Send courseId, not courseName
         };
-
+    
         try {
             await axios.put(
                 `http://localhost:5109/api/admin/batches/${editedBatch.batchId}`,
                 dataToSend
             );
 
-            // Fetch updated batch data from the backend
+            console.log("response send",dataToSend)
+    
+            // Refresh batch data after update
             const response = await axios.get("http://localhost:5109/api/admin/batches");
             setBatches(response.data);
-
+    
             setOpen(false);
         } catch (error) {
             console.error("Error saving batch data:", error);
         }
     };
-
+    
     const handleDelete = (batchId) => {
-        axios
-            .delete(`http://localhost:5109/api/admin/batches/${batchId}`)
-            .then(() => {
-                setBatches((prevBatches) =>
-                    prevBatches.filter((batch) => batch.batchId !== batchId)
-                );
-            })
-            .catch((error) => console.error("Error deleting batch:", error));
+        if (window.confirm("Are you sure you want to delete this batch?")) {
+            axios
+                .delete(`http://localhost:5109/api/admin/batches/${batchId}`)
+                .then(() => {
+                    // Remove the batch from the UI after successful deletion
+                    setBatches((prevBatches) =>
+                        prevBatches.filter((batch) => batch.batchId !== batchId)
+                    );
+                    alert("Batch deleted successfully.");
+                })
+                .catch((error) => {
+                    console.error("Error deleting batch:", error);
+                    alert("Failed to delete the batch. Please try again.");
+                });
+        }
     };
+    
 
     const handleClose = () => {
         setOpen(false);
@@ -94,9 +169,9 @@ const BatchManagement = () => {
 
     return (
         <div>
-            <h2>Manage Batches</h2>
-            <button onClick={() => {/* Open Add Batch Modal */}}>Add Batch</button>
-            <table>
+            <h2 className="table-heading">Manage Batches</h2>
+            <button className="create-course-btn" onClick={handleCreateOpen}>Create Batch</button>
+            <table className="course-table">
     <thead>
         <tr className="table-header">
             <th className="table-header-cell">Batch ID</th>
@@ -104,7 +179,8 @@ const BatchManagement = () => {
             <th className="table-header-cell">Batch Timing</th>
             <th className="table-header-cell">Batch Type</th>
             <th className="table-header-cell">Course Name</th>
-            <th className="table-header-cell">Teacher</th>
+            <th className="table-header-cell">Teacher ID</th>
+            <th className="table-header-cell">Teacher Assigned</th>
             <th className="table-header-cell">Action</th>
         </tr>
     </thead>
@@ -116,6 +192,7 @@ const BatchManagement = () => {
                 <td className="table-cell">{batch.batchTiming}</td>
                 <td className="table-cell">{batch.batchType}</td>
                 <td className="table-cell">{batch.course.courseName}</td>
+                <td className="table-cell">{batch.course.teacher.teacherId}</td>
                 <td className="table-cell">{batch.course.teacher.user.name}</td>
                 <td className="table-cell">
                     <button className="action-button" onClick={() => handleEdit(batch)}>Edit</button>
@@ -124,7 +201,25 @@ const BatchManagement = () => {
             </tr>
         ))}
     </tbody>
-</table>
+</table>    
+
+        {/* dialog for create batch  */}
+
+        <Dialog open={isDialogOpen} onClose={handleCreateClose}>
+                <DialogTitle>Create Batch</DialogTitle>
+                <DialogContent>
+                    <DialogContentText>Enter batch details below.</DialogContentText>
+                    <TextField label="Batch Name" name="batchName" fullWidth value={batchValues.batchName} onChange={handleCreateChange} className="Studenteditinput"/>
+                    <TextField label="Batch Timing" name="batchTiming" fullWidth value={batchValues.batchTiming} onChange={handleCreateChange} className="Studenteditinput"/>
+                    <TextField label="Batch Type" name="batchType" fullWidth value={batchValues.batchType} onChange={handleCreateChange} className="Studenteditinput"/>
+                    <TextField label="Course ID" name="courseId" fullWidth value={batchValues.courseId} onChange={handleCreateChange} className="Studenteditinput"/>
+                    <TextField label="Teacher ID" name="teacherId" fullWidth value={batchValues.teacherId} onChange={handleCreateChange} className="Studenteditinput"/>
+                </DialogContent>
+                <DialogActions>
+                    <Button onClick={handleCreateClose}>Cancel</Button>
+                    <Button onClick={handleCreateSave}>Save</Button>
+                </DialogActions>
+            </Dialog>
 
 
 
@@ -158,21 +253,29 @@ const BatchManagement = () => {
                         className="Studenteditinput"
                     />
                     <TextField
-                        label="Course Name"
-                        name="courseName"
+                        label="Course Id"
+                        name="courseId"
                         fullWidth
-                        value={editedBatch.courseName}
+                        value={editedBatch.courseId}
                         onChange={handleChange}
                         className="Studenteditinput"
                     />
-                    <TextField
+                    {/* <TextField
+                        label="Teacher ID"
+                        name="teacherId"
+                        fullWidth
+                        value={editedBatch.teacherId}
+                        onChange={handleChange}
+                        className="Studenteditinput"
+                    /> */}
+                    {/* <TextField
                         label="Teacher Name"
                         name="teacherName"
                         fullWidth
                         value={editedBatch.teacherName}
                         onChange={handleChange}
                         className="Studenteditinput"
-                    />
+                    /> */}
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={handleClose}>Cancel</Button>
