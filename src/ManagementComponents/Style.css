@@ -47,6 +47,11 @@
 .TeacherEditInput{
     margin-top: 18px !important;
 }
+.TeacherCheckboxEditInput{
+    margin-top: 18px !important;
+    width: 100% !important;
+    margin-left: 0px !important;
+}
 
 .action-button {
     padding: 8px 16px;

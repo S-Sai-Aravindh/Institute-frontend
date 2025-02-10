@@ -13,12 +13,57 @@ const CourseManagement = () => {
     const [courses, setCourses] = useState([]);
     const [open, setOpen] = useState(false);
     const [delopen, setDelOpen] = useState(false);
+
+    const [isDialogOpen, setIsDialogOpen] = useState(false);
+    const [courseValues, setCourseValues] = useState({
+      courseName: '',
+      courseDescription: '',
+      teacherId: '',
+    });
+
     const [courseIdToDelete, setCourseIdToDelete] = useState(null);
     const [editedCourse, setEditedCourse] = useState({
         courseId: "",
         courseName: "",
         description: "",
     });
+    // create boxes 
+    const handleCClose = () => {
+        setIsDialogOpen(false);
+      };
+
+      const handleCChange = (event) => {
+        const { name, value } = event.target;
+        // Update the form values in the state
+        setCourseValues({ ...courseValues, [name]: value });
+      };
+
+      const handleCSave = async (event) => {
+        event.preventDefault();
+    
+        // Get the course details from the form
+        const courseName = courseValues.courseName;
+        const description = courseValues.courseDescription;
+        const teacherId = courseValues.teacherId;
+    
+        // Make the POST request using axios
+        try {
+          const response = await axios.post('http://localhost:5109/api/admin/courses', {
+            courseName: courseName,
+            description: description,
+            teacher: {
+              teacherId: teacherId,
+            },
+          });
+    
+          console.log(response);
+          setIsDialogOpen(false); // Close the dialog box after successful post
+        } catch (error) {
+          console.error(error);
+        }
+      };
+
+    // end create boxes 
 
     useEffect(() => {
         axios
@@ -100,6 +145,7 @@ const CourseManagement = () => {
     return (
         <div className="course-management-container">
             <h2 className="table-heading">Course Management</h2>
+            <button variant="contained" onClick={() => setIsDialogOpen(true)}>Create Course</button>
             <table className="course-table">
                 <thead>
                     <tr className="table-header">
@@ -123,6 +169,41 @@ const CourseManagement = () => {
                     ))}
                 </tbody>
             </table>
+
+            <Dialog open={isDialogOpen} onClose={handleCClose}>
+        <DialogTitle>Create Course</DialogTitle>
+        <DialogContent>
+          <DialogContentText>Create course details below.</DialogContentText>
+          <TextField
+            label="Course Name"
+            name="courseName"
+            fullWidth
+            value={courseValues.courseName}
+            onChange={handleCChange}
+            className="createCourseInput"
+          />
+          <TextField
+            label="Course Description"
+            name="courseDescription"
+            fullWidth
+            value={courseValues.courseDescription}
+            onChange={handleCChange}
+            className="createCourseInput"
+          />
+          <TextField
+            label="Teacher ID"
+            name="teacherId"
+            fullWidth
+            value={courseValues.teacherId}
+            onChange={handleCChange}
+            className="createCourseInput"
+          />
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleCClose}>Cancel</Button>
+          <Button onClick={handleCSave}>Save</Button>
+        </DialogActions>
+      </Dialog>
 
             {/* Dialog for Editing Course */}
             <Dialog open={open} onClose={handleClose}>
