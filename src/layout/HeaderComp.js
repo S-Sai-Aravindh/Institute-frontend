@@ -32,6 +32,7 @@ const HeaderComp = () => {
     sessionStorage.removeItem('email');
     sessionStorage.removeItem('role');
     sessionStorage.removeItem('authToken');
+    sessionStorage.removeItem('name');
     setIsLoggedIn(false);
     navigate('/'); // Redirect to home page after logout
   };

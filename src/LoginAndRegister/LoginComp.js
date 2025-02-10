@@ -16,7 +16,13 @@ const LoginComp = () => {
             });
     
             const user = response.data.find((user) => user.email === email && user.password === password);
-    
+            
+            const idresponse = await axios.get('http://localhost:5109/api/auth/Alldetails');
+
+
+            console.log("User data: ",idresponse.data.studentId);
+            console.log("User data: ",idresponse.data.teacherId);
+
             if (!user) {
                 alert('Invalid credentials');
                 return null;
@@ -68,7 +74,8 @@ const LoginComp = () => {
                 default:
                     path = '/';
             }
-            window.location.href = path;
+            navigate(path);
+            // window.location.href = path;
     
         } catch (error) {
             console.error("Authentication error:", error.response?.data);
