@@ -62,3 +62,39 @@
     background-color: #007bff;
   color: white;
   }
+  .studentEditbutton{
+    margin-top: 20px;
+  /* display: block;
+  margin-left: auto;
+  margin-right: auto; */
+  width: 90px;
+  }
+
+  .studentEditbutton:hover{
+    background-color: #007bff;
+  color: white;
+  }
+
+  .button-container {
+    display: flex; 
+    gap: 20px; 
+  }
+
+
+  .Enrollbuttonstudent {
+    display: inline-block; /* Ensures it behaves like a button */
+    padding: 10px 20px; /* Adds padding for a button-like appearance */
+    /* background-color: #4CAF50; A different color for the button (green in this case) */
+    color:  #4CAF50;; /* Text color */
+    text-align: center; /* Center the text */
+    text-decoration: none; /* Remove underline */
+    border-radius: 5px; /* Rounded corners */
+    border: 1px solid #4CAF50; /* Border color */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition */
+  }
+  
+  .Enrollbuttonstudent:hover {
+    background-color: #45a049; /* Darker green on hover */
+    color: white; /* Ensure the text stays white on hover */
+  }
