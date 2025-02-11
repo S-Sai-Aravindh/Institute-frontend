@@ -12,9 +12,12 @@ import './Style.css'; // Include your styles as necessary
 
 const StudentDashboard = () => {
   const [student, setStudent] = useState(null);
-  const [open, setOpen] = useState(false); // State for dialog
-  const [editedData, setEditedData] = useState({ name: '', email: '', contactDetails: '' });
   
+  const [open, setOpen] = useState(false); // State for dialog
+  const [editedData, setEditedData] = useState({ name: '', email: '', contactDetails: '',batchId:'' ,role:'' });
+  const token = sessionStorage.getItem('authToken');
+
+  const userstudentId = sessionStorage.getItem('userId');
   const studentId = sessionStorage.getItem('studentId');
 
   useEffect(() => {
@@ -28,6 +31,8 @@ const StudentDashboard = () => {
           name: response.data.user.name,
           email: response.data.user.email,
           contactDetails: response.data.user.contactDetails,
+          batchId: response.data.batchId,
+          role: response.data.user.role
         });
       } catch (error) {
         console.error("Error fetching student details:", error);
@@ -53,27 +58,39 @@ const StudentDashboard = () => {
   };
 
   const handleSave = async () => {
+    if (!userstudentId) {
+      console.error("Student ID is required for update");
+      return;
+    }
+  
     try {
-      // Log the data before sending
-      console.log("Sending edited data: ", editedData);
+      const response = await axios.put(
+        `http://localhost:5109/api/auth/${userstudentId}`,
+        editedData,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
   
-      const response = await axios.put(`http://localhost:5109/api/admin/students/${studentId}`, editedData);
-      
-      // Log the API response
-      console.log("Response from API: ", response.data);
-  
-      // If the response doesn't contain the expected data
       if (response.data) {
         setStudent(response.data); // Update student data with response
+        sessionStorage.setItem("name", response.data.user.name);
+        window.location.reload();
       } else {
         console.warn("No data returned from the update response.");
       }
-      
+  
       setOpen(false); // Close the dialog after saving
     } catch (error) {
-      console.error("Error saving student data:", error.response ? error.response.data : error.message);
+      console.error(
+        "Error saving student data:",
+        error.response ? error.response.data : error.message
+      );
     }
   };
+  
 
   return (
     <div className="admin-dashboard-container">
