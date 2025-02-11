@@ -25,6 +25,7 @@ import EnrolledCourses from '../Components/EnrolledCourses';
 import CreateCourse from '../Components/CreateCourse';
 import AdminDashboard from '../Components/AdminDashboard';
 import ForgotPassComp from '../LoginAndRegister/ForgotPassComp';
+import MyCourse from '../Components/MyCourse';
 
 
 const routing = createBrowserRouter([
@@ -57,7 +58,9 @@ const routing = createBrowserRouter([
         ]},
         {path:'student',element:<StudentPageComp /> , children:[
           {path:'dashboard',element:<StudentDashboard />}, 
-          {path:'courses',element:<BatchManagement />}, 
+          {path:'courses',element:<MyCourse />}, 
+          {path:'profile',element:<BatchManagement />}, 
+          {path:'batch',element:<BatchManagement />}, 
         ]},
         {path:'teacher',element:<TeacherPageComp /> , children:[
           {path:'dashboard',element:<TeacherDashboard />},
