@@ -8,7 +8,7 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
-import './Style.css'; // Include your styles as necessary
+import '../Style.css'; // Include your styles as necessary
 
 const StudentDashboard = () => {
   const [student, setStudent] = useState(null);
@@ -104,7 +104,7 @@ const StudentDashboard = () => {
       <p className="admin-detail-item"><strong>Contact:</strong> <span>{student.user.contactDetails}</span></p>
       <div className="button-container">
         <Button variant="outlined" onClick={handleClickOpen} className="studentEditbutton">Edit</Button>
-        <Link to="/Myprofile/student/courses" className="button Enrollbuttonstudent">
+        <Link to="/Myprofile/student/allcourses" className="button Enrollbuttonstudent">
           Enroll in Courses
         </Link>
       </div>

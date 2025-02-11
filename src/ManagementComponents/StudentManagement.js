@@ -23,6 +23,7 @@ const StudentTable = () => {
         batchName: "",
         batchTiming: "",
         batchType: "",
+        courseId:"",
         courseName: "",
         courseDescription: "",
     });
@@ -46,6 +47,7 @@ const StudentTable = () => {
             batchName: student.batch?.batchName || "",
             batchTiming: student.batch?.batchTiming || "",
             batchType: student.batch?.batchType || "",
+            courseId: student.batch?.course?.courseId || "",
             courseName: student.batch?.course?.courseName || "",
             courseDescription: student.batch?.course?.description || "",
         });
@@ -66,6 +68,7 @@ const StudentTable = () => {
                 contactDetails: editedStudent.contactDetails,
             },
             batchId: editedStudent.batchId || null, // Ensure batchId is sent
+            courseId: editedStudent.courseId || null, // Ensure batchId is sent
         };
     
         console.log("Data to be sent:", dataToSend);

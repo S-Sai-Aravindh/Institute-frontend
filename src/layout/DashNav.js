@@ -23,9 +23,9 @@ const DashNav = () => {
                 <div className="subnav-container" style={{width:"280px"}}>
                   <h1 className='subnavheader'>Student Dashboard</h1>
                   <NavLink to="/Myprofile/student/dashboard" className="subnavbuttons" activeClassName="active">Dashboard</NavLink>{" "}
-                  <NavLink to="/Myprofile/student/courses" className="subnavbuttons" activeClassName="active">My Courses</NavLink>{" "}
-                  <NavLink to="/Myprofile/student/course" className="subnavbuttons" activeClassName="active">Course List</NavLink>{" "}
-                  <NavLink to="/Myprofile/student/batch" className="subnavbuttons" activeClassName="active">Batch</NavLink>{" "}
+                  <NavLink to="/Myprofile/student/mycourse" className="subnavbuttons" activeClassName="active">My Course</NavLink>{" "}
+                  <NavLink to="/Myprofile/student/allcourses" className="subnavbuttons" activeClassName="active">All Courses</NavLink>{" "}
+                  <NavLink to="/Myprofile/student/batch" className="subnavbuttons" activeClassName="active">Batch Details</NavLink>{" "}
                   {/* <NavLink to="/Myprofile/student/profile" className="subnavbuttons" activeClassName="active">Progress</NavLink>{" "} */}
                 </div>
               )}

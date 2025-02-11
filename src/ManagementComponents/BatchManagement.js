@@ -58,10 +58,13 @@ const BatchManagement = () => {
         batchName: batchValues.batchName,
         batchTiming: batchValues.batchTiming,
         batchType: batchValues.batchType,
+        course:{
         courseId: batchValues.courseId,  // Ensure it's a valid ID, not course name
-        teacherId: batchValues.teacherId,  // Ensure it's a valid ID, not teacher name
+        teacher:{
+            teacherId: batchValues.teacherId
+        }
+    },  // Ensure it's a valid ID, not teacher name
     };
-
     try {
         const response = await axios.post("http://localhost:5109/api/admin/batches", dataToSend);
         console.log("Batch created:", response.data);
@@ -194,7 +197,7 @@ const BatchManagement = () => {
                 <td className="table-cell">{batch.course.courseName}</td>
                 <td className="table-cell">{batch.course.teacher.teacherId}</td>
                 <td className="table-cell">{batch.course.teacher.user.name}</td>
-                <td className="table-cell">
+                <td className="table-cell" >
                     <button className="action-button" onClick={() => handleEdit(batch)}>Edit</button>
                     <button className="action-button" onClick={() => handleDelete(batch.batchId)}>Delete</button>
                 </td>

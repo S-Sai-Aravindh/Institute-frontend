@@ -19,13 +19,16 @@ import TeacherManagement from '../ManagementComponents/TeacherManagement';
 import CourseManagement from '../ManagementComponents/CourseManagement';
 import BatchManagement from '../ManagementComponents/BatchManagement';
 import Reports from '../ManagementComponents/Reports';
-import StudentDashboard from '../Components/StudentDashboard';
+import StudentDashboard from '../Components/StudentComponents/StudentDashboard';
 import TeacherDashboard from '../Components/TeacherDashboard';
 import EnrolledCourses from '../Components/EnrolledCourses';
 import CreateCourse from '../Components/CreateCourse';
 import AdminDashboard from '../Components/AdminDashboard';
 import ForgotPassComp from '../LoginAndRegister/ForgotPassComp';
-import MyCourse from '../Components/MyCourse';
+import MyCourse from '../Components/StudentComponents/MyCourse';
+import StudAllCoursesComp from '../Components/StudentComponents/StudAllCoursesComp';
+import StudentBatch from '../Components/StudentComponents/StudentBatch';
+import TeachCourseList from '../Components/TeacherComponents/TeachCourseLIst';
 
 
 const routing = createBrowserRouter([
@@ -58,15 +61,15 @@ const routing = createBrowserRouter([
         ]},
         {path:'student',element:<StudentPageComp /> , children:[
           {path:'dashboard',element:<StudentDashboard />}, 
-          {path:'courses',element:<MyCourse />}, 
-          {path:'profile',element:<BatchManagement />}, 
-          {path:'batch',element:<BatchManagement />}, 
+          {path:'mycourse',element:<MyCourse />}, 
+          {path:'allcourses',element:<StudAllCoursesComp />}, 
+          {path:'batch',element:<StudentBatch />}, 
         ]},
         {path:'teacher',element:<TeacherPageComp /> , children:[
           {path:'dashboard',element:<TeacherDashboard />},
           {path:'enrolledcourses',element:<EnrolledCourses />},
           {path:'createcourse',element:<CourseManagement />},
-          {path:'students',element:<StudentManagement />},
+          {path:'students',element:<TeachCourseList />},
           {path:'batches',element:<BatchManagement />},
         ]}
       ]
