@@ -98,3 +98,79 @@
     background-color: #45a049; /* Darker green on hover */
     color: white; /* Ensure the text stays white on hover */
   }
+
+  .mycourse-container {
+    padding: 30px;
+    max-width: 900px;
+    margin: auto;
+    background-color: #f8f8f8;
+    border-radius: 12px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+  }
+  
+  .mycourse-heading {
+    text-align: center;
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 25px;
+    color: #2c3e50;
+    font-family: "Georgia", serif;
+  }
+  
+  .mycourse-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .mycourse-card {
+    background: #fff;
+    border-left: 8px solid #3498db;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .mycourse-card:hover {
+    transform: scale(1.02);
+  }
+  
+  .mycourse-title {
+    font-size: 26px;
+    font-weight: bold;
+    color: #2c3e50;
+    font-family: "Georgia", serif;
+  }
+  
+  .mycourse-description {
+    font-size: 18px;
+    color: #555;
+    margin-top: 10px;
+  }
+  
+  .mycourse-teacher-info {
+    margin-top: 15px;
+    padding-top: 10px;
+    border-top: 2px solid #ddd;
+  }
+  
+  .mycourse-teacher-name {
+    font-size: 20px;
+    font-weight: bold;
+    color: #34495e;
+  }
+  
+  .mycourse-specialization,
+  .mycourse-contact {
+    font-size: 16px;
+    color: #666;
+  }
+  
+  .mycourse-empty {
+    text-align: center;
+    font-size: 22px;
+    color: red;
+    font-weight: bold;
+  }
+  

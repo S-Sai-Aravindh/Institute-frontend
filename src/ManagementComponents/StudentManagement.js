@@ -128,7 +128,7 @@ const StudentTable = () => {
             <table className="student-table">
                 <thead>
                     <tr className="table-header">
-                    <th className="table-header-cell">Student ID</th>
+                        <th className="table-header-cell">Student ID</th>
                         <th className="table-header-cell">Name</th>
                         <th className="table-header-cell">Email</th>
                         <th className="table-header-cell">Contact Details</th>

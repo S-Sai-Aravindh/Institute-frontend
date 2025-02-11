@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import "./Style.css";
 
 const MyCourse = () => {
   const [courses, setCourses] = useState([]);
@@ -21,33 +22,24 @@ const MyCourse = () => {
   }, [studentId]);
 
   return (
-    <div className="my-courses-container">
-      <h2>My Courses</h2>
+    <div className="mycourse-container">
+      <h2 className="mycourse-heading">My Courses</h2>
       {courses.length > 0 ? (
-        <table className="courses-table">
-          <thead>
-            <tr>
-              <th>Course Name</th>
-              <th>Description</th>
-              <th>Teacher Name</th>
-              <th>Specialization</th>
-              <th>Contact Details</th>
-            </tr>
-          </thead>
-          <tbody>
-            {courses.map((course) => (
-              <tr key={course.courseId}>
-                <td>{course.courseName}</td>
-                <td>{course.description}</td>
-                <td>{course.teacher?.user?.name || "N/A"}</td>
-                <td>{course.teacher?.subjectSpecialization || "N/A"}</td>
-                <td>{course.teacher?.user?.contactDetails || "N/A"}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+        <div className="mycourse-list">
+          {courses.map((course) => (
+            <div key={course.courseId} className="mycourse-card">
+              <h3 className="mycourse-title">{course.courseName}</h3>
+              <p className="mycourse-description">{course.description}</p>
+              <div className="mycourse-teacher-info">
+                <h4 className="mycourse-teacher-name">Instructor: {course.teacher?.user?.name || "N/A"}</h4>
+                <p className="mycourse-specialization">Specialization: {course.teacher?.subjectSpecialization || "N/A"}</p>
+                <p className="mycourse-contact">Contact: {course.teacher?.user?.contactDetails || "N/A"}</p>
+              </div>
+            </div>
+          ))}
+        </div>
       ) : (
-        <p>No courses enrolled yet.</p>
+        <p className="mycourse-empty">No courses enrolled yet.</p>
       )}
     </div>
   );

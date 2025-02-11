@@ -24,8 +24,9 @@ const DashNav = () => {
                   <h1 className='subnavheader'>Student Dashboard</h1>
                   <NavLink to="/Myprofile/student/dashboard" className="subnavbuttons" activeClassName="active">Dashboard</NavLink>{" "}
                   <NavLink to="/Myprofile/student/courses" className="subnavbuttons" activeClassName="active">My Courses</NavLink>{" "}
-                  <NavLink to="/Myprofile/student/profile" className="subnavbuttons" activeClassName="active">Students</NavLink>{" "}
+                  <NavLink to="/Myprofile/student/course" className="subnavbuttons" activeClassName="active">Course List</NavLink>{" "}
                   <NavLink to="/Myprofile/student/batch" className="subnavbuttons" activeClassName="active">Batch</NavLink>{" "}
+                  {/* <NavLink to="/Myprofile/student/profile" className="subnavbuttons" activeClassName="active">Progress</NavLink>{" "} */}
                 </div>
               )}
               {( location.pathname.startsWith('/Myprofile/teacher') || location.pathname === '/Myprofile/teacher') && (
