@@ -193,7 +193,7 @@ const CourseManagement = () => {
             fullWidth
             value={courseValues.courseName}
             onChange={handleCChange}
-            className="createCourseInput"
+            className="Studenteditinput"
           />
           <TextField
             label="Course Description"
@@ -201,7 +201,7 @@ const CourseManagement = () => {
             fullWidth
             value={courseValues.courseDescription}
             onChange={handleCChange}
-            className="createCourseInput"
+            className="Studenteditinput"
           />
           <TextField
             label="Teacher ID"
@@ -209,7 +209,7 @@ const CourseManagement = () => {
             fullWidth
             value={courseValues.teacherId}
             onChange={handleCChange}
-            className="createCourseInput"
+            className="Studenteditinput"
           />
         </DialogContent>
         <DialogActions>

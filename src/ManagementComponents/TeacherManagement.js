@@ -10,12 +10,49 @@ import DialogTitle from "@mui/material/DialogTitle";
 import MultiplSelectChecks from "../Components/MultiplSelectChecks"
 import "./Style.css";
 
+const validationRules = {
+    name: {
+        required: true,
+        pattern: /^[a-zA-Z ]+$/,
+        message: {
+            required: "Name is required.",
+            pattern: "Name must consist of letters and spaces only."
+        }
+    },
+    email: {
+        required: true,
+        pattern: /^[a-zA-Z0-9]{3,20}@gmail\.com$/,
+        message: {
+            required: "Email is required.",
+            pattern: "Invalid email address."
+        }
+    },
+    contactDetails: {
+        required: true,
+        pattern: /^[0-9]{10}$/, // Assuming contact details must be a 10-digit number
+        message: {
+            required: "Contact details are required.",
+            pattern: "Contact details must be a 10-digit number."
+        }
+    },
+    subjectSpecialization: {
+        required: true,
+        pattern: /^[a-zA-Z0-9 ]+$/,
+        message: {
+            required: "Batch ID is required.",
+            pattern: " subjectSpecialization must consist of letters,Numbers and spaces only."
+        }
+    }
+};
+
 const TeacherTable = () => {
     const [teachers, setTeachers] = useState([]);
     const [open, setOpen] = useState(false);
     const [courseNames, setCourseNames] = useState([]); // State for course names
     const [delopen, setDelopen] = useState(false); // Dialog open state
     const [teacherIdToDelete, setTeacherIdToDelete] = useState(null); // Store the teacher ID to delete
+
+    const [errors, setErrors] = useState({}); // State for errors
 
     const [editedTeacher, setEditedTeacher] = useState({
         teacherId: "",
@@ -77,6 +114,23 @@ const TeacherTable = () => {
             }
         }
     };
+
+    const validateForm = () => {
+        let newErrors = {};
+        for (const field in editedTeacher) {
+            const rules = validationRules[field];
+            if (rules) {
+                if (rules.required && !editedTeacher[field]) {
+                    newErrors[field] = rules.message.required;
+                } else if (rules.pattern && !rules.pattern.test(editedTeacher[field])) {
+                    newErrors[field] = rules.message.pattern;
+                }
+            }
+        }
+        setErrors(newErrors);
+        return Object.keys(newErrors).length === 0; // Return true if no errors
+    };
+
     
 
 
@@ -229,10 +283,10 @@ const TeacherTable = () => {
                 <DialogTitle>Edit Teacher Details</DialogTitle>
                 <DialogContent>
                     <DialogContentText>Update teacher details below.</DialogContentText>
-                    <TextField label="Name" name="name" fullWidth value={editedTeacher.name} onChange={handleChange} className="TeacherEditInput"/>
-                    <TextField label="Email" name="email" fullWidth value={editedTeacher.email} onChange={handleChange} className="TeacherEditInput"/>
-                    <TextField label="Contact Details" name="contactDetails" fullWidth value={editedTeacher.contactDetails} onChange={handleChange} className="TeacherEditInput"/>
-                    <TextField label="Subject Specialization" name="subjectSpecialization" fullWidth value={editedTeacher.subjectSpecialization} onChange={handleChange} className="TeacherEditInput"/>
+                    <TextField label="Name" name="name" fullWidth value={editedTeacher.name} onChange={handleChange} className="TeacherEditInput"  error={!!errors.name} helperText={errors.name}/>
+                    <TextField label="Email" name="email" fullWidth value={editedTeacher.email} onChange={handleChange} className="TeacherEditInput" error={!!errors.email} helperText={errors.email}/>
+                    <TextField label="Contact Details" name="contactDetails" fullWidth value={editedTeacher.contactDetails} onChange={handleChange} className="TeacherEditInput" error={!!errors.contactDetails} helperText={errors.contactDetails}/>
+                    <TextField label="Subject Specialization" name="subjectSpecialization" fullWidth value={editedTeacher.subjectSpecialization} onChange={handleChange} className="TeacherEditInput" error={!!errors.subjectSpecialization} helperText={errors.subjectSpecialization}/>
                 
                      {/* Replace the TextField for courses with the MultipleSelectCheckmarks component */}
         {/* <MultiplSelectChecks
