@@ -31,7 +31,7 @@ const DashNav = () => {
                 </div>
               )}
               {( location.pathname.startsWith('/Myprofile/teacher') || location.pathname === '/Myprofile/teacher') && (
-                <div className="subnav-container" style={{width:"280px"}}>
+                <div className="subnav-container" style={{width:"270px"}}>
                   <h1 className='subnavheader'>Teacher Dashboard</h1>
                   <NavLink to="/Myprofile/teacher/dashboard" className="subnavbuttons">Dashboard</NavLink>{" "}
                   <NavLink to="/Myprofile/teacher/students" className="subnavbuttons" activeClassName="active">Students</NavLink>{" "}

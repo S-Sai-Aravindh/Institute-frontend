@@ -24,35 +24,36 @@ const NavComp = () => {
         )}
       </div>
 
-      {/* {(location.pathname.startsWith('/Myprofile/admin') || location.pathname === '/Myprofile/admin') && (
-        <div className="subnav-container">
-          <Link to="/Myprofile/admin" className="subnavbuttons">Dashboard</Link>{" "}
-          <Link to="/Myprofile/admin/students" className="subnavbuttons">Manage Students</Link>{" "}
-          <Link to="/Myprofile/admin/teachers" className="subnavbuttons">Manage Teachers</Link>{" "}
-          <Link to="/Myprofile/admin/courses" className="subnavbuttons">Manage Courses</Link>{" "}
-          <Link to="/Myprofile/admin/batches" className="subnavbuttons">Manage Batches</Link>{" "}
-          <Link to="/Myprofile/admin/reports" className="subnavbuttons">View Reports</Link>{" "}
+      {(location.pathname.startsWith('/Myprofile/admin') || location.pathname === '/Myprofile/admin') && (
+        <div className="subnav-containermt">
+          <Link to="/Myprofile/admin/dashboard" className="subnavbuttonsmt">Dashboard</Link>{" "}
+          <Link to="/Myprofile/admin/students" className="subnavbuttonsmt">Students</Link>{" "}
+          <Link to="/Myprofile/admin/teachers" className="subnavbuttonsmt">Teachers</Link>{" "}
+          <Link to="/Myprofile/admin/courses" className="subnavbuttonsmt">Courses</Link>{" "}
+          <Link to="/Myprofile/admin/batches" className="subnavbuttonsmt">Batches</Link>{" "}
+          <Link to="/Myprofile/admin/queries" className="subnavbuttonsmt">Queries</Link>{" "}
+          <Link to="/Myprofile/admin/enrollrequest" className="subnavbuttonsmt">Enroll Request</Link>{" "}
         </div>
       )}
 
 
       {( location.pathname.startsWith('/Myprofile/student') || location.pathname === '/Myprofile/student' ) &&(
-        <div className="subnav-container">
-          <Link to="/Myprofile/student" className="subnavbuttons">Dashboard</Link>{" "}
-          <Link to="/Myprofile/student/courses" className="subnavbuttons">Enroll in Courses</Link>{" "}
-          <Link to="/Myprofile/student/profile" className="subnavbuttons">Profile</Link>{" "}
-          <Link to="/Myprofile/student/batch" className="subnavbuttons">Batch Information</Link>{" "}
+        <div className="subnav-containermt">
+          <Link to="/Myprofile/student/dashboard" className="subnavbuttonsmt">Dashboard</Link>{" "}
+          <Link to="/Myprofile/student/mycourse" className="subnavbuttonsmt">My Course</Link>{" "}
+          <Link to="/Myprofile/student/allcourses" className="subnavbuttonsmt">All Courses</Link>{" "}
+          <Link to="/Myprofile/student/batch" className="subnavbuttonsmt">Batch Details</Link>{" "}
+          <Link to="/Myprofile/student/enrollform" className="subnavbuttonsmt">Enroll Form</Link>{" "}
         </div>
       )}
       {( location.pathname.startsWith('/Myprofile/teacher') || location.pathname === '/Myprofile/teacher') && (
-        <div className="subnav-container">
-          <Link to="/Myprofile/teacher" className="subnavbuttons">Dashboard</Link>{" "}
-          <Link to="/Myprofile/teacher/enrolledcourses" className="subnavbuttons">My Courses</Link>{" "}
-          <Link to="/Myprofile/teacher/createcourse" className="subnavbuttons">Create Course</Link>{" "}
-          <Link to="/Myprofile/teacher/students" className="subnavbuttons">Manage Students</Link>{" "}
-          <Link to="/Myprofile/teacher/batches" className="subnavbuttons">Manage Batches</Link>{" "}
+        <div className="subnav-containermt">
+          <Link to="/Myprofile/teacher/dashboard" className="subnavbuttonsmt">Dashboard</Link>{" "}
+          <Link to="/Myprofile/teacher/students" className="subnavbuttonsmt">Students</Link>{" "}
+          <Link to="/Myprofile/teacher/createcourse" className="subnavbuttonsmt">Courses</Link>{" "}
+          <Link to="/Myprofile/teacher/batches" className="subnavbuttonsmt">Student Batches</Link>{" "}
         </div>
-      )} */}
+      )}
 
     </div>
   );

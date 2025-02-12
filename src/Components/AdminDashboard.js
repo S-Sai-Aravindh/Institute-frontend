@@ -133,7 +133,7 @@ export default function AdminDashboard() {
             value={editedData.email}
             onChange={handleChange}
           />
-          <TextField
+          {/* <TextField
             margin="dense"
             id="role"
             name="role"
@@ -143,7 +143,7 @@ export default function AdminDashboard() {
             variant="standard"
             value={editedData.role}
             onChange={handleChange}
-          />
+          /> */}
           <TextField
             margin="dense"
             id="contactDetails"

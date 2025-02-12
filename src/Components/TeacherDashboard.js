@@ -101,7 +101,7 @@ const TeacherDashboard = () => {
             <p className="admin-detail-item"><strong>Email:</strong> <span>{teacher.user.email}</span></p>
             <p className="admin-detail-item"><strong>Role:</strong> <span>{teacher.user.role}</span></p>
             <p className="admin-detail-item"><strong>Contact:</strong> <span>{teacher.user.contactDetails}</span></p>
-            <p className="admin-detail-item"><strong>Subject Specialization:</strong> <span>{subjectSpecialization}</span></p>
+            <p className="admin-detail-item"><strong>Specialization:</strong> <span>{subjectSpecialization}</span></p>
             
             <div className="button-container">
               <Button variant="outlined" onClick={handleClickOpen} className="studentEditbutton">Edit</Button>

@@ -4,7 +4,7 @@ import axios from "axios";
 
 const EnrollForm = () => {
   // State to handle form fields
-//   const [studentId, setStudentId] = useState("");
+  const [studentId, setStudentId] = useState("");
   const [courseId, setCourseId] = useState("");
   const [courseName, setCourseName] = useState("");
   const [error, setError] = useState(""); // State for error handling
@@ -12,7 +12,7 @@ const EnrollForm = () => {
   // Handle form field changes
   const handleChange = (e) => {
     const { name, value } = e.target;
-    // if (name === "studentId") setStudentId(value);
+    if (name === "studentId") setStudentId(value);
     if (name === "courseId") setCourseId(value);
     if (name === "courseName") setCourseName(value);
   };
@@ -22,7 +22,7 @@ const EnrollForm = () => {
     e.preventDefault(); // Prevent page refresh on form submit
 
     const enrollRequest = {
-    //   StudentId: studentId,
+      StudentId: studentId,
       CourseId: courseId,
       CourseName: courseName,
     };
@@ -31,7 +31,7 @@ const EnrollForm = () => {
       const response = await axios.post("http://localhost:5109/api/enrollrequest", enrollRequest);
       console.log("Enroll request success:", response.data);
       // Reset form fields after successful submission
-    //   setStudentId("");
+      setStudentId("");
       setCourseId("");
       setCourseName("");
     } catch (error) {
@@ -50,10 +50,10 @@ const EnrollForm = () => {
         </Typography>
       )}
 
-      <form onSubmit={handleEnroll}>
+      <form onSubmit={handleEnroll} style={{minHeight:"35.65vh"}}>
         <Grid container spacing={2}>
           <Grid item xs={12}>
-            {/* <TextField
+            <TextField
               fullWidth
               label="Student ID"
               type="number"
@@ -62,7 +62,7 @@ const EnrollForm = () => {
               value={studentId}
               onChange={handleChange}
               required
-            /> */}
+            />
           </Grid>
 
           <Grid item xs={12}>
