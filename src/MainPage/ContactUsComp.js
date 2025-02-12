@@ -1,10 +1,32 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import './Style.css';
 
 const ContactUsComp = () => {
   const [formData, setFormData] = useState({ name: "", email: "", contact: "", message: "" });
   const [errors, setErrors] = useState({});
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const validationErrors = validate();
+  
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+    } else {
+      try {
+        const response = await axios.post("http://localhost:5109/api/Contact", formData, {
+          headers: { "Content-Type": "application/json" },
+        });
+  
+        alert(response.data.message);
+        setFormData({ name: "", email: "", contact: "", message: "" });
+        setErrors({});
+      } catch (error) {
+        alert("Error submitting the form. Please try again.");
+        console.error(error);
+      }
+    }
+  };
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
@@ -42,33 +64,6 @@ const ContactUsComp = () => {
 
     return newErrors;
   };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const validationErrors = validate();
-    
-    if (Object.keys(validationErrors).length > 0) {
-      setErrors(validationErrors);
-    } else {
-      const { name, email, contact, message } = formData;
-      
-      // Display form data in the alert
-      alert(
-        `Form Submitted Successfully!\n\n` +
-        `Name: ${name}\n` +
-        `Email: ${email}\n` +
-        `Contact: ${contact}\n` +
-        `Message: ${message}`
-      );
-  
-      console.log("Form Submitted:", formData);
-  
-      // Reset form
-      setFormData({ name: "", email: "", contact: "", message: "" });
-      setErrors({});
-    }
-  };
-  
 
   return (
     <div style={{background:"#FFF8E1"}} className='contactSection'>

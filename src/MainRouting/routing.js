@@ -29,6 +29,7 @@ import MyCourse from '../Components/StudentComponents/MyCourse';
 import StudAllCoursesComp from '../Components/StudentComponents/StudAllCoursesComp';
 import StudentBatch from '../Components/StudentComponents/StudentBatch';
 import TeachCourseList from '../Components/TeacherComponents/TeachCourseLIst';
+import QueryTable from '../Components/QueryTable';
 
 
 const routing = createBrowserRouter([
@@ -57,7 +58,7 @@ const routing = createBrowserRouter([
           {path:'teachers',element:<TeacherManagement />},
           {path:'courses',element:<CourseManagement />},
           {path:'batches',element:<BatchManagement />},
-          {path:'reports',element:<Reports />}
+          {path:'queries',element:<QueryTable />}
         ]},
         {path:'student',element:<StudentPageComp /> , children:[
           {path:'dashboard',element:<StudentDashboard />}, 

@@ -14,7 +14,7 @@ const DashNav = () => {
                       <NavLink to="/Myprofile/admin/teachers" className="subnavbuttons" activeClassName="active">Teachers</NavLink>
                       <NavLink to="/Myprofile/admin/courses" className="subnavbuttons" activeClassName="active">Courses</NavLink>
                       <NavLink to="/Myprofile/admin/batches" className="subnavbuttons" activeClassName="active">Batches</NavLink>
-                      <NavLink to="/Myprofile/admin/reports" className="subnavbuttons" activeClassName="active">Reports</NavLink>
+                      <NavLink to="/Myprofile/admin/queries" className="subnavbuttons" activeClassName="active">Queries</NavLink>
                   </div>
               )}
               
