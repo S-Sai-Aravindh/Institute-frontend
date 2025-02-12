@@ -91,14 +91,42 @@ const StudentTable = () => {
     
 
     const handleConfirmDelete = async (studentId) => {
-        if (studentIdToDelete) {
-            try {
-                await axios.delete(`http://localhost:5109/api/admin/students/${studentIdToDelete}`);
-                setStudents(prevStudents => prevStudents.filter(student => student.studentId !== studentIdToDelete));
-            } catch (error) {
-                console.error(`Error deleting student with ID ${studentIdToDelete}:`, error);
-            }
+        if (!studentId) {
+            console.error("No student ID provided for deletion.");
+            return;
         }
+    
+        try {
+            // Fetch all user details
+            const response = await axios.get("http://localhost:5109/api/auth/alldetails");
+            const allUsers = response.data;
+    
+            console.log("All Users:", allUsers);
+            console.log("Deleting Student ID:", studentIdToDelete);
+    
+            // Find the corresponding userId for the given studentId
+            const user = allUsers.find(user => user.studentId === studentIdToDelete);
+            if (!user) {
+                console.error(`No user found for Student ID: ${studentIdToDelete}`);
+                return;
+            }
+    
+            const userId = user.userId;
+            console.log("Associated User ID:", userId);
+    
+            // Proceed with delete request
+            const deleteUrl = `http://localhost:5109/api/admin/students/${studentIdToDelete}?userId=${userId}`;
+            console.log("DELETE Request URL:", deleteUrl);
+    
+            await axios.delete(deleteUrl);
+    
+            // Update the state after successful deletion
+            setStudents(prevStudents => prevStudents.filter(student => student.studentId !== studentIdToDelete));
+    
+        } catch (error) {
+            console.error(`Error deleting student with ID ${studentIdToDelete}:`, error.response?.data || error.message);
+        }
+    
         handledelClose();
     };
     
