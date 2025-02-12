@@ -20,6 +20,15 @@ const StudentDashboard = () => {
   const userstudentId = sessionStorage.getItem('userId');
   const studentId = sessionStorage.getItem('studentId');
 
+
+  // student enroll form start
+  
+  
+
+  
+  // student enroll form end
+
+
   useEffect(() => {
     // Fetch student profile data
     const fetchStudentData = async () => {
@@ -98,13 +107,14 @@ const StudentDashboard = () => {
       {student && (
   <>
     <div className="admin-details">
+      <p className="admin-detail-item"><strong>Student ID:</strong> <span>{studentId}</span></p>
       <p className="admin-detail-item"><strong>Name:</strong> <span>{student.user.name}</span></p>
       <p className="admin-detail-item"><strong>Email:</strong> <span>{student.user.email}</span></p>
       <p className="admin-detail-item"><strong>Role:</strong> <span>{student.user.role}</span></p>
       <p className="admin-detail-item"><strong>Contact:</strong> <span>{student.user.contactDetails}</span></p>
       <div className="button-container">
         <Button variant="outlined" onClick={handleClickOpen} className="studentEditbutton">Edit</Button>
-        <Link to="/Myprofile/student/allcourses" className="button Enrollbuttonstudent">
+        <Link to="/Myprofile/student/enrollform" className="button Enrollbuttonstudent">
           Enroll in Courses
         </Link>
       </div>

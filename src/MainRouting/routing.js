@@ -30,6 +30,8 @@ import StudAllCoursesComp from '../Components/StudentComponents/StudAllCoursesCo
 import StudentBatch from '../Components/StudentComponents/StudentBatch';
 import TeachCourseList from '../Components/TeacherComponents/TeachCourseLIst';
 import QueryTable from '../Components/QueryTable';
+import EnrollForm from '../Components/StudentComponents/Enrollrequestform';
+import Enrollreq from '../Components/Enrollreq';
 
 
 const routing = createBrowserRouter([
@@ -58,13 +60,15 @@ const routing = createBrowserRouter([
           {path:'teachers',element:<TeacherManagement />},
           {path:'courses',element:<CourseManagement />},
           {path:'batches',element:<BatchManagement />},
-          {path:'queries',element:<QueryTable />}
+          {path:'queries',element:<QueryTable />},
+          {path:'enrollrequest',element:<Enrollreq />}
         ]},
         {path:'student',element:<StudentPageComp /> , children:[
           {path:'dashboard',element:<StudentDashboard />}, 
           {path:'mycourse',element:<MyCourse />}, 
           {path:'allcourses',element:<StudAllCoursesComp />}, 
           {path:'batch',element:<StudentBatch />}, 
+          {path:'enrollform',element:<EnrollForm />}, 
         ]},
         {path:'teacher',element:<TeacherPageComp /> , children:[
           {path:'dashboard',element:<TeacherDashboard />},

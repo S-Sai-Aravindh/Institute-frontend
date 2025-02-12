@@ -15,6 +15,7 @@ const DashNav = () => {
                       <NavLink to="/Myprofile/admin/courses" className="subnavbuttons" activeClassName="active">Courses</NavLink>
                       <NavLink to="/Myprofile/admin/batches" className="subnavbuttons" activeClassName="active">Batches</NavLink>
                       <NavLink to="/Myprofile/admin/queries" className="subnavbuttons" activeClassName="active">Queries</NavLink>
+                      <NavLink to="/Myprofile/admin/enrollrequest" className="subnavbuttons" activeClassName="active">Enroll Request</NavLink>
                   </div>
               )}
               
@@ -26,7 +27,7 @@ const DashNav = () => {
                   <NavLink to="/Myprofile/student/mycourse" className="subnavbuttons" activeClassName="active">My Course</NavLink>{" "}
                   <NavLink to="/Myprofile/student/allcourses" className="subnavbuttons" activeClassName="active">All Courses</NavLink>{" "}
                   <NavLink to="/Myprofile/student/batch" className="subnavbuttons" activeClassName="active">Batch Details</NavLink>{" "}
-                  {/* <NavLink to="/Myprofile/student/profile" className="subnavbuttons" activeClassName="active">Progress</NavLink>{" "} */}
+                  <NavLink to="/Myprofile/student/enrollform" className="subnavbuttons" activeClassName="active">Enroll Form</NavLink>{" "}
                 </div>
               )}
               {( location.pathname.startsWith('/Myprofile/teacher') || location.pathname === '/Myprofile/teacher') && (

@@ -14,6 +14,7 @@ const TeacherDashboard = () => {
   const [teacher, setTeacher] = useState(null);
   const [courses, setCourses] = useState([]);
   const [open, setOpen] = useState(false);
+  const [subjectSpecialization, setSubjectSpecialization] = useState("");
   const [editedData, setEditedData] = useState({ name: "", email: "", contactDetails: "", role: "" });
 
   const token = sessionStorage.getItem("authToken");
@@ -32,9 +33,17 @@ const TeacherDashboard = () => {
           contactDetails: response.data.user.contactDetails,
           role: response.data.user.role,
         });
+
+        // Fetch subject specialization from the teacher-specific endpoint
+        const subjectResponse = await axios.get(`http://localhost:5109/api/teacher/${teacherId}`);
+        setSubjectSpecialization(subjectResponse.data.subjectSpecialization); // Set the subject specialization
+
+
       } catch (error) {
         console.error("Error fetching teacher details:", error);
       }
+
+
     };
 
     fetchTeacherData();
@@ -87,10 +96,12 @@ const TeacherDashboard = () => {
       {teacher && (
         <>
           <div className="admin-details">
+            <p className="admin-detail-item"><strong>Teacher ID:</strong> <span>{teacherId}</span></p>
             <p className="admin-detail-item"><strong>Name:</strong> <span>{teacher.user.name}</span></p>
             <p className="admin-detail-item"><strong>Email:</strong> <span>{teacher.user.email}</span></p>
             <p className="admin-detail-item"><strong>Role:</strong> <span>{teacher.user.role}</span></p>
             <p className="admin-detail-item"><strong>Contact:</strong> <span>{teacher.user.contactDetails}</span></p>
+            <p className="admin-detail-item"><strong>Subject Specialization:</strong> <span>{subjectSpecialization}</span></p>
             
             <div className="button-container">
               <Button variant="outlined" onClick={handleClickOpen} className="studentEditbutton">Edit</Button>
