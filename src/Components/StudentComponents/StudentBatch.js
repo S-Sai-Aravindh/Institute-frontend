@@ -17,7 +17,7 @@ const StudentBatch = () => {
 
 
   return (
-    <div>
+    <div className="course-management-container">
       <h2 className="table-heading">Batch Details</h2>
             <table className="course-table">
     <thead>

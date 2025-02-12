@@ -1,4 +1,15 @@
 .student-table-container {
+    /* padding: 0px; */
+    max-width: 88%;
+    margin-right: 40px;
+    /* margin: 0 auto; */
+}
+.teacher-table-container {
+    padding: 20px;
+    max-width: 90%;
+    margin: 0 auto;
+}
+.course-management-container {
     padding: 20px;
     max-width: 90%;
     margin: 0 auto;

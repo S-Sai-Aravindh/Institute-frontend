@@ -171,7 +171,7 @@ const BatchManagement = () => {
     };
 
     return (
-        <div>
+        <div className="course-management-container">
             <h2 className="table-heading">Manage Batches</h2>
             <button className="create-course-btn" onClick={handleCreateOpen}>Create Batch</button>
             <table className="course-table">

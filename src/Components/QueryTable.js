@@ -11,7 +11,7 @@ const QueryTable = () => {
   }, []);
 
   return (
-    <div >
+    <div className="course-management-container">
       <h2 className="table-heading">Contact Queries</h2>
       <table className="course-table">
         <thead>

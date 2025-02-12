@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import Logo from '../assets/Logo/logoimgfinal-Photoroom.png';
 import './Style.css';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate , useLocation } from 'react-router-dom';
 import NavComp from './NavComp';
 
 const HeaderComp = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
 
   // Toggle the dropdown menu
   const toggleDropdown = () => {
@@ -37,20 +38,28 @@ const HeaderComp = () => {
     navigate('/'); // Redirect to home page after logout
   };
 
+  const headerClass = location.pathname === '/login' ? 'Mainheader login' : 'Mainheader';
+  const showLoginButton = location.pathname !== '/login';
+
   return (
     <div>
-      <div className='Mainheader'>
+      <div className={headerClass}>
         <span className='Logoimgspan'>
           <img src={Logo} alt='Logo' className='logoimg' />
         </span>
         <span className='Headertitle'>Mirai D. Scholars</span>
+
         {isLoggedIn ? (
-          <Link to="/" className="HeaderLoginbutton" onClick={handleLogout}>
-            Logout
+        <Link to="/" className="HeaderLoginbutton" onClick={handleLogout}>
+          Logout
+        </Link>
+      ) : (
+        showLoginButton && (
+          <Link to="/login" className="HeaderLoginbutton">
+            Login
           </Link>
-        ) : (
-          <Link to="/login" className="HeaderLoginbutton">Login</Link>
-        )}
+        )
+      )}
         <div className="HamburgerMenu" onClick={toggleDropdown}>
           <div className="line"></div>
           <div className="line"></div>
