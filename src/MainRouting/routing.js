@@ -71,7 +71,7 @@ const routing = createBrowserRouter([
           {path:'enrolledcourses',element:<EnrolledCourses />},
           {path:'createcourse',element:<CourseManagement />},
           {path:'students',element:<TeachCourseList />},
-          {path:'batches',element:<BatchManagement />},
+          {path:'batches',element:<StudentManagement />},
         ]}
       ]
     },

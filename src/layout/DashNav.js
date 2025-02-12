@@ -35,7 +35,7 @@ const DashNav = () => {
                   <NavLink to="/Myprofile/teacher/dashboard" className="subnavbuttons">Dashboard</NavLink>{" "}
                   <NavLink to="/Myprofile/teacher/students" className="subnavbuttons" activeClassName="active">Students</NavLink>{" "}
                   <NavLink to="/Myprofile/teacher/createcourse" className="subnavbuttons" activeClassName="active">Courses</NavLink>{" "}
-                  <NavLink to="/Myprofile/teacher/batches" className="subnavbuttons" activeClassName="active">Batches</NavLink>{" "}
+                  <NavLink to="/Myprofile/teacher/batches" className="subnavbuttons" activeClassName="active">Student Batches</NavLink>{" "}
                 </div>
               )}
     </div>

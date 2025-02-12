@@ -9,6 +9,9 @@ const TeachCourseList = () => {
         const response = await fetch("http://localhost:5109/api/admin/courses");
         const data = await response.json();
 
+
+
+
         // Get teacherId from sessionStorage
         const storedTeacherId = sessionStorage.getItem("teacherId");
 
@@ -19,13 +22,27 @@ const TeachCourseList = () => {
 
         const teacherId = parseInt(storedTeacherId, 10);
 
-        // Filter courses by teacherId and extract students
+        console.log("data:",data);
+
+         // Filter courses by teacherId and extract students with course details
         const filteredStudents = data
-          .filter(course => course.teacher.teacherId === teacherId) // Match teacherId
-          .flatMap(course => course.enrollment ? [course.enrollment.student] : []) // Extract students
-          .filter(student => student && student.user.role === "Student"); // Ensure valid students
+        .filter(course => course.teacher.teacherId === teacherId) // Match teacherId
+        .flatMap(course =>
+          course.enrollment && course.enrollment.student
+            ? [{
+                ...course.enrollment.student,
+                courseId: course.courseId,
+                courseName: course.courseName
+              }]
+            : []
+        )
+        .filter(student => student.user && student.user.role === "Student");
+        
+      
 
         setStudents(filteredStudents);
+
+        console.log("Response :" ,filteredStudents);
       } catch (error) {
         console.error("Error fetching courses:", error);
       }
@@ -45,6 +62,8 @@ const TeachCourseList = () => {
             <th className="table-header-cell">Name</th>
             <th className="table-header-cell">Email</th>
             <th className="table-header-cell">Contact</th>
+            <th className="table-header-cell">Course ID</th>
+            <th className="table-header-cell">Course Name</th>
           </tr>
         </thead>
         <tbody>
@@ -56,6 +75,8 @@ const TeachCourseList = () => {
                 <td className="table-cell">{student.user.name}</td>
                 <td className="table-cell">{student.user.email}</td>
                 <td className="table-cell">{student.user.contactDetails}</td>
+                <td className="table-cell">{student.courseId}</td>
+                <td className="table-cell">{student.courseName}</td>
               </tr>
             ))
           ) : (
