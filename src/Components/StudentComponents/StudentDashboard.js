@@ -10,6 +10,45 @@ import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import '../Style.css'; // Include your styles as necessary
 
+const validationRules = {
+  name: {
+    required: {
+      value: true,
+      message: 'Please enter your name',
+    },
+    pattern: {
+      value: /^[a-zA-Z ]+$/,
+      message: 'Please enter a valid name (no numbers or special characters)',
+    },
+  },
+  email: {
+    required: {
+      value: true,
+      message: 'Please enter a valid email',
+    },
+    pattern: {
+      value: /^[a-zA-Z0-9]{3,20}@gmail\.com$/,
+      message: 'Please enter a valid email address',
+    },
+  },
+  role: {
+    required: {
+      value: true,
+      message: 'Please enter your role',
+    },
+  },
+  contactDetails: {
+    required: {
+      value: true,
+      message: 'Please enter your contact details',
+    },
+    pattern: {
+      value: /^[0-9]{10}$/,
+      message: 'Please enter valid contact details',
+    },
+  },
+};
+
 const StudentDashboard = () => {
   const [student, setStudent] = useState(null);
   
@@ -19,7 +58,7 @@ const StudentDashboard = () => {
 
   const userstudentId = sessionStorage.getItem('userId');
   const studentId = sessionStorage.getItem('studentId');
-
+  const [errors, setErrors] = React.useState({});
 
   // student enroll form start
   
@@ -57,6 +96,18 @@ const StudentDashboard = () => {
 
   const handleClose = () => {
     setOpen(false); // Close the dialog
+    resetForm(); // Reset form on dialog close
+
+  };
+
+  const resetForm = () => {
+    setEditedData({
+      name: '',
+      email: '',
+      role: '',
+      contactDetails: ''
+    });
+    setErrors({});
   };
 
   const handleChange = (e) => {
@@ -64,12 +115,35 @@ const StudentDashboard = () => {
       ...editedData,
       [e.target.name]: e.target.value,
     });
+    setErrors((prevErrors) => ({
+      ...prevErrors,
+      [e.target.name]: '',
+    }));
+  };
+
+  const validateForm = () => {
+    let newErrors = {};
+    // Check validations based on rules
+    for (const field in validationRules) {
+      const rules = validationRules[field];
+      if (rules.required.value && !editedData[field]) {
+        newErrors[field] = rules.required.message;
+      } else if (rules.pattern && !rules.pattern.value.test(editedData[field])) {
+        newErrors[field] = rules.pattern.message;
+      }
+    }
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0; // No errors means valid
   };
 
   const handleSave = async () => {
     if (!userstudentId) {
       console.error("Student ID is required for update");
       return;
+    }
+
+    if (!validateForm()) {
+      return; // Prevent save if validation failed
     }
   
     try {
@@ -141,6 +215,8 @@ const StudentDashboard = () => {
             variant="standard"
             value={editedData.name}
             onChange={handleChange}
+            error={!!errors.name} // Display error state if exists
+            helperText={errors.name} // Display error message
           />
           <TextField
             margin="dense"
@@ -152,6 +228,8 @@ const StudentDashboard = () => {
             variant="standard"
             value={editedData.email}
             onChange={handleChange}
+            error={!!errors.email} // Display error state if exists
+            helperText={errors.email} // Display error message
           />
           <TextField
             margin="dense"
@@ -163,11 +241,16 @@ const StudentDashboard = () => {
             variant="standard"
             value={editedData.contactDetails}
             onChange={handleChange}
+            error={!!errors.contactDetails} // Display error state if exists
+            helperText={errors.contactDetails} // Display error message
           />
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Cancel</Button>
-          <Button onClick={handleSave}>Save</Button>
+          <Button onClick={(event) => {
+              event.preventDefault(); // Prevent default form submission
+              handleSave();  // Call save function
+            }}>Save</Button>
         </DialogActions>
       </Dialog>
     </div>

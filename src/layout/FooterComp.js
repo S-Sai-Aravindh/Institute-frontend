@@ -40,7 +40,7 @@ const FooterComp = () => {
     </div>
 
     <div className='copyright'>
-    Copyright © 2024 Mirai D. Scholars Private Limited
+    Copyright © 2025 Mirai D. Scholars Private Limited
     </div>
   </div>
 

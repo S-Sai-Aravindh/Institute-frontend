@@ -27,14 +27,14 @@ const RegisterComp = () => {
     else if (!/^[A-Za-z\s]{3,}$/.test(formData.name)) newErrors.name = "Invalid Name";
     
     if (!formData.email.trim()) newErrors.email = 'Email is required';
-    else if (!/^[a-zA-Z0-9]{3,20}@gmail\.com$/.test(formData.email)) newErrors.email = 'Invalid email format';
+    else if (!/^[a-zA-Z0-9._-]+@gmail\.com$/.test(formData.email)) newErrors.email = 'Invalid email format';
 
     if (!formData.contactDetails.trim()) newErrors.contactDetails = 'Contact number is required';
     else if (!/^\d{10}$/.test(formData.contactDetails)) newErrors.contactDetails = 'Contact number should be 10 digits';
 
     if (!formData.password.trim()) newErrors.password = 'Password is required';
     else if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,20}$/.test(formData.password)) {
-        newErrors.password = 'Password must be 8-20 characters long and include at least one uppercase letter, one lowercase letter, one number, and one special character.';
+        newErrors.password = 'Password must be Strong eg (Mirai@12)';
     }
 
     if (!formData.role || formData.role === 'Select') newErrors.role = 'Role is required';

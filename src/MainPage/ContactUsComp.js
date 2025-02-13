@@ -35,7 +35,7 @@ const ContactUsComp = () => {
   const validate = () => {
     const newErrors = {};
     const nameRegex = /^[A-Za-z\s]{3,}$/; // Only letters and spaces
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Basic email format
+    const emailRegex = /^[a-zA-Z0-9]{3,20}@gmail\.com$/; // Basic email format
     const contactRegex = /^\d{10}$/; // Exactly 10 digits
 
     if (!formData.name.trim()) {

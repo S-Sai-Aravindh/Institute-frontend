@@ -54,11 +54,46 @@ const StudentTable = () => {
         setOpen(true);
     };
 
+
+    // validata form 
+
+    const [errors, setErrors] = useState({});
+
+const validate = () => {
+    let tempErrors = {};
+    if (!editedStudent.name.trim()) {
+        tempErrors.name = "Name is required";
+    } else if (!/^[A-Za-z\s]+$/.test(editedStudent.name)) {
+        tempErrors.name = "Name should only contain letters and spaces";
+    }
+    
+    if (!editedStudent.email.trim()) 
+        tempErrors.email = "Email is required";
+    else if (!/^[a-zA-Z0-9._-]+@gmail\.com$/.test(editedStudent.email)) 
+        tempErrors.email = "Invalid email format";
+    if (!editedStudent.contactDetails.trim()) 
+        tempErrors.contactDetails = "Contact details are required";
+    else if (!/^\d{10}$/.test(editedStudent.contactDetails)) 
+        tempErrors.contactDetails = "Invalid contact number (10 digits)";
+    if (!String(editedStudent.batchId).trim()) {
+        tempErrors.batchId = "Batch ID is required";
+    } else if (!/^\d+$/.test(editedStudent.batchId)) {
+        tempErrors.batchId = "Batch ID should only contain numbers";
+    }
+    
+
+    setErrors(tempErrors);
+    return Object.keys(tempErrors).length === 0;
+};
+
+
     const handleSave = async () => {
         if (!editedStudent.studentId) {
             console.error("Student ID is required for update");
             return;
         }
+
+        if (validate()) {
     
         const dataToSend = {
             studentId: editedStudent.studentId,
@@ -87,6 +122,8 @@ const StudentTable = () => {
         } catch (error) {
             console.error("Error saving student data:", error);
         }
+
+    }
     };
     
 
@@ -137,6 +174,7 @@ const StudentTable = () => {
             ...editedStudent,
             [e.target.name]: e.target.value,
         });
+        setErrors({ ...errors, [e.target.name]: "" });
     };
 
     const handleDelClickOpen = (studentId) => {
@@ -199,10 +237,27 @@ const StudentTable = () => {
                 <DialogTitle>Edit Student Details</DialogTitle>
                 <DialogContent>
                     <DialogContentText>Update student details below.</DialogContentText>
+                    
+
+                    <TextField label="Name" name="name" fullWidth value={editedStudent.name} 
+                onChange={handleChange} error={!!errors.name} helperText={errors.name} className="Studenteditinput"/>
+            <TextField label="Email" name="email" fullWidth value={editedStudent.email} 
+                onChange={handleChange} error={!!errors.email} helperText={errors.email} className="Studenteditinput"/>
+            <TextField label="Contact Details" name="contactDetails" fullWidth value={editedStudent.contactDetails} 
+                onChange={handleChange} error={!!errors.contactDetails} helperText={errors.contactDetails} className="Studenteditinput"/>
+            <TextField label="Batch Id" name="batchId" fullWidth value={editedStudent.batchId} 
+                onChange={handleChange} error={!!errors.batchId} helperText={errors.batchId} className="Studenteditinput"/>
+        
+                    
+{/*                     
+                    
                     <TextField label="Name" name="name" fullWidth value={editedStudent.name} onChange={handleChange} className="Studenteditinput"/>
                     <TextField label="Email" name="email" fullWidth value={editedStudent.email} onChange={handleChange} className="Studenteditinput"/>
                     <TextField label="Contact Details" name="contactDetails" fullWidth value={editedStudent.contactDetails} onChange={handleChange} className="Studenteditinput"/>
                     <TextField label="Batch Id" name="batchId" fullWidth value={editedStudent.batchId} onChange={handleChange} className="Studenteditinput"/>
+                    
+                     */}
+                    
                     {/* <TextField label="Batch Name" name="batchName" fullWidth value={editedStudent.batchName} onChange={handleChange} className="Studenteditinput"/> */}
                     {/* <TextField label="Batch Timing" name="batchTiming" fullWidth value={editedStudent.batchTiming} onChange={handleChange} className="Studenteditinput"/> */}
                     {/* <TextField label="Batch Type" name="batchType" fullWidth value={editedStudent.batchType} onChange={handleChange} className="Studenteditinput"/> */}
