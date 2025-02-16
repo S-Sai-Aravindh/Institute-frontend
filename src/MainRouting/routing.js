@@ -18,11 +18,11 @@ import StudentManagement from '../ManagementComponents/StudentManagement';
 import TeacherManagement from '../ManagementComponents/TeacherManagement';
 import CourseManagement from '../ManagementComponents/CourseManagement';
 import BatchManagement from '../ManagementComponents/BatchManagement';
-import Reports from '../ManagementComponents/Reports';
+// import Reports from '../ManagementComponents/Reports';
 import StudentDashboard from '../Components/StudentComponents/StudentDashboard';
 import TeacherDashboard from '../Components/TeacherDashboard';
 import EnrolledCourses from '../Components/EnrolledCourses';
-import CreateCourse from '../Components/CreateCourse';
+// import CreateCourse from '../Components/CreateCourse';
 import AdminDashboard from '../Components/AdminDashboard';
 import ForgotPassComp from '../LoginAndRegister/ForgotPassComp';
 import MyCourse from '../Components/StudentComponents/MyCourse';
@@ -32,6 +32,7 @@ import TeachCourseList from '../Components/TeacherComponents/TeachCourseLIst';
 import QueryTable from '../Components/QueryTable';
 import EnrollForm from '../Components/StudentComponents/Enrollrequestform';
 import Enrollreq from '../Components/Enrollreq';
+import NewTeacherComp from '../Components/NewTeacherComp';
 
 
 const routing = createBrowserRouter([
@@ -52,8 +53,9 @@ const routing = createBrowserRouter([
       {path:'teacher',element: <TeacherPageComp/>},
       {path:'forgot-password',element: <ForgotPassComp/>},
 
-      { path: 'Myprofile' , element: <MyProfilePageComp/> 
+      { path: 'Myprofile' , element: <ProtectedRouting />
         , children:[
+          { path: '', element: <MyProfilePageComp /> },
         {path:'admin',element:<AdminPageComp />, children:[
           {path:'dashboard',element:<AdminDashboard />},
           {path:'students',element:<StudentManagement />},
@@ -61,7 +63,8 @@ const routing = createBrowserRouter([
           {path:'courses',element:<CourseManagement />},
           {path:'batches',element:<BatchManagement />},
           {path:'queries',element:<QueryTable />},
-          {path:'enrollrequest',element:<Enrollreq />}
+          {path:'enrollrequest',element:<Enrollreq />},
+          {path:'newteachers',element:<NewTeacherComp />} 
         ]},
         {path:'student',element:<StudentPageComp /> , children:[
           {path:'dashboard',element:<StudentDashboard />}, 

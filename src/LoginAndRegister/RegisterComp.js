@@ -42,17 +42,63 @@ const RegisterComp = () => {
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
 };
+
+
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   if (validate()) {
+
+  //     console.log("Formdata: ",formData);
+
+
+  //     try {
+  //       const response = await axios.post("http://localhost:5109/api/auth/register", formData, {
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //         },
+  //       });
+
+  //       alert("Registered Successfully");
+  //       console.log("Register data:", response.data);
+  //       window.location.href = "/Login";
+  //     } catch (error) {
+  //       console.error("Error:", error);
+  //       alert(error.response?.data?.message || "Registration failed");
+  //     }
+  //   }
+  // };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (validate()) {
+      console.log("Formdata: ", formData);
+  
       try {
-        const response = await axios.post("http://localhost:5109/api/auth/register", formData, {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        });
-
-        alert("Registered Successfully");
+        let response;
+        // Check the role and select the corresponding URL
+        if (formData.role.toLowerCase() === "student") {
+          // Use the normal registration endpoint for students
+          response = await axios.post(
+            "http://localhost:5109/api/auth/register",
+            formData,
+            { headers: { "Content-Type": "application/json" } }
+          );
+          alert("Registered Successfully");
+        } else if (formData.role.toLowerCase() === "teacher") {
+          // Use a different endpoint for teacher registration
+          response = await axios.post(
+            "http://localhost:5109/api/newteacher",
+            formData,
+            { headers: { "Content-Type": "application/json" } }
+          );
+          alert("Register request sent Successfully");
+        } else {
+          // Optionally handle any unexpected role values
+          alert("Invalid role provided");
+          return;
+        }
+  
+        // alert("Registered Successfully");
         console.log("Register data:", response.data);
         window.location.href = "/Login";
       } catch (error) {
@@ -61,6 +107,7 @@ const RegisterComp = () => {
       }
     }
   };
+  
 
   return (
     <div className='min-vh-100 d-flex align-items-center justify-content-center' style={{ backgroundColor: "#FFF8E1" }}>
